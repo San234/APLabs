@@ -1,0 +1,6 @@
+public class firstProg
+{
+	public static void main(String[]args)
+	{
+		Ssem.out.println("Hello World");
+		}
