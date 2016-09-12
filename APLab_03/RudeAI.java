@@ -22,18 +22,30 @@ public class RudeAI
 		System.out.println(music + "... Well, I have got no word for you to listen to that.\n");
 		
 		String interests;
+<<<<<<< HEAD
 		System.out.print("So what do you do for fun?");
 		interests = user_input.nextLine();
 		System.out.println(interests + ", hmm... interesting, but I think " + interests + " will dislike you.\n");
+=======
+		System.out.print("So what are you intesting in");
+		interests = user_input.nextLine();
+		System.out.println(interests + ", hmm... interesting, but I think " + interests + " will dislike you.")
+>>>>>>> 8fed69e0e573a4722bed22bdfee07c0c8bc12f27
 		
 		String siblings;
 		System.out.print("And how many siblings do you have? ");
 		siblings = user_input.nextLine();
+<<<<<<< HEAD
 		System.out.println(siblings + "? Not bad, are they respect you or not, I hope they do not? But if you have none, well good for you...\n");
 		
 		String dream;
 		System.out.print("Lastly, What do you want to be when you grow up? ");
 		dream = user_input.nextLine();
 		System.out.println("Your dream of being " + dream + " will be hard for you to achieve, old man...\n");
+=======
+		System.out.println(siblings + "? Not bad, are they respect you or not, I hope they do not? But if you have none, well good for you...");
+		
+		
+>>>>>>> 8fed69e0e573a4722bed22bdfee07c0c8bc12f27
 	}
 }
