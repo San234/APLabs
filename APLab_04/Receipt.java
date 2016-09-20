@@ -32,8 +32,10 @@ public class Receipt
 		
 		System.out.println("<<<<<<<<<<<<<<<<__Receipt__>>>>>>>>>>>>>>>>");
 		System.out.println("                                           ");
-		System.out.printf("*" + "%15S" + " ........\t" + "%12s" + "\n", item1, price1);
-		System.out.printf("*" + "%15S" + " ........\t" + "%12s" + "\n", item2, price2);
-		System.out.printf("*" + "%15S" + " ........\t" + "%12s" + "\n", item3, price3);
+		System.out.printf("*" + "%15S" + " ........\t" + "%15s" + "\n", item1, price1);
+		System.out.printf("*" + "%15S" + " ........\t" + "%15s" + "\n", item2, price2);
+		System.out.printf("*" + "%15S" + " ........\t" + "%15s" + "\n", item3, price3);
+		System.out.println("___________________________________________");
+		System.out.println("\t   *Thank you for your Support*");
 	}
 }
