@@ -14,7 +14,7 @@ public class IDCard
 		System.out.print("Enter your last name: ");
 		l_name = up.nextLine();
 		
-		String title = "Teacher"; 
+		String title = "Student"; 
 		
 		String s_name;
 		System.out.print("Enter the school site: ");
@@ -22,16 +22,16 @@ public class IDCard
 		
 		String y_name;
 		System.out.print("Enter the school year: ");
-		f_name = up.nextLine();
+		y_name = up.nextLine();
 		
 		String sub_name;
 		System.out.print("Enter your subject: ");
 		sub_name = up.nextLine();
 		
-		System.out.printf("******************************");
-		System.out.printf("*" + "%2s", s_name + "%2s", y_name + "*");
-		System.out.printf("*") + ("%2s", f_name) + ("%2s", l_name) + ("*");
-		System.out.printf("*") + ("%2s", title) + ("%2s", sub_name) + ("*");
+		System.out.printf("******************************\n");
+		System.out.printf("*" + "%15s" + "%13s" + "*\n", s_name, y_name);
+		System.out.printf("*" + "%15S" + "%13S" + "*\n", f_name, l_name);
+		System.out.printf("*" + "%15s" + "%13s" + "*\n", title, sub_name);
 		System.out.printf("******************************");
 	}
 }
