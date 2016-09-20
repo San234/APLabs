@@ -15,13 +15,6 @@ public class Guide
 		
 		if(score > 100 || score < 0){
 			System.out.println("DO NOT LIE!!");
-			
-			System.out.print("Try Again? ");
-			String answer = user_input.next();
-			
-			if(answer == "y" || answer =="Y"){
-				
-			}
 			System.exit(0);
 		}
 		
