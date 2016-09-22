@@ -35,15 +35,21 @@ public class test
 		System.out.println("<<<<<<<<<<<<<<<<__Receipt__>>>>>>>>>>>>>>>>");
 		System.out.println("                                           ");
 		
-		Receipt.format(item1, price1, item2, price2, item3, price3, subtotal, sb, tx, tax, tt, total);
+		Receipt.format(item1, price1);
+		Receipt.format(item2, price2);
+		Receipt.format(item3, price3);
+		System.out.println("                    ");
+		Receipt.format(sb, subtotal);
+		Receipt.format(tx, tax);
+		Receipt.format(tt, total);
+		
+		System.out.println("-------------------------------------------");
+		System.out.println("\t   Thank your for your support   \t");
+		
 	}
-	public void format(String item1, Double price1, String item2, Double price2, String item3, Double price3, Double subtotal, String sb, String tx, Double tax, String tt, Double total)
+	public void format(String item, Double price)
 	{
-		System.out.printf("*" + "%15S" + " ........\t" + "%12.2f" + "\n", item1, price1);
-		System.out.printf("*" + "%15S" + " ........\t" + "%12.2f" + "\n", item3, price2);
-		System.out.printf("*" + "%15S" + " ........\t" + "%12.2f" + "\n", item2, price3);
-		System.out.printf("*" + "%15S" + ": " + "%20.2f" + "\n", sb, subtotal);
-		System.out.printf("*" + "%15S" + ": " + "%20.2f" + "\n", tx, tax);
-		System.out.printf("*" + "%15S" + ": " + "%20.2f" + "\n", tt, total);
+		System.out.printf("*" + "%15S" + " ........\t" + "%12.2f" + "\n", item, price);
+	
 	}
 }
