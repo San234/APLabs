@@ -29,16 +29,16 @@ public class compoundInterest
 		double iR = r/100;
 		
 		double tt = total.format(P, t, iR, n);
-		double mt = total.monthly(tt, t);
+		double mt = total.monthly(tt, t, n, P);
 		System.out.printf("Your total monthly payment is $" +"%.2f\n", tt);
-		System.out.printf("Your monthly payment is $" + "%.2f", mt);
+		System.out.printf("Your yearly payment is $" + "%.2f", mt);
 	}
 	public double format(Double P, Double t, Double iR, Double n)
 	{
 		return P * Math.pow(1+iR/n, n*t);
 	}
-	public double monthly(Double tt, Double t)
+	public double monthly(Double tt, Double t, Double n, Double P)
 	{
-		return tt / (t*12);
+		return (tt - P)/t;
 	}
 }
