@@ -20,11 +20,15 @@ public class Rectangle
 		
 		perimeter = A.PerimCalc(l, w);
 		
-		System.out.printf("Your rectangle is " + "%.5f" + "sq ft around", perimeter);
+		A.print(perimeter);
 	}
 	
 	public double PerimCalc(Double l, Double w)
 	{
 		return 2*l + 2*w;
+	}
+	public static void print(Double perimeter)
+	{
+		System.out.printf("Your rectangle is " + "%.5f" + "sq ft around", perimeter);
 	}
 }

@@ -19,9 +19,9 @@ public class Rectangle
 		Height = user_input.nextFloat();
 		
 		Float Surface_Area;
-		Surface_Area = 2 * (Width + Length + Height);
+		Surface_Area = 2 * ((Width * Length) + (Height * Length) + (Height * Width));
 		
-		System.out.println("The surface area is " + Surface_Area);
+		System.out.println("The surface area of your rectangle is " + Surface_Area);
 		
 	}
 }
