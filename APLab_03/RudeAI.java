@@ -17,5 +17,15 @@ public class RudeAI
 		System.out.println(ages + "?!?!" + " You are too old!");
 		
 		String interests;
+		System.out.print("So what are you intesting in");
+		interests = user_input.nextLine();
+		System.out.println(interests + ", hmm... interesting, but I think " + interests + " will dislike you.")
+		
+		String siblings;
+		System.out.print("And how many siblings do you have? ");
+		siblings = user_input.nextLine();
+		System.out.println(siblings + "? Not bad, are they respect you or not, I hope they do not? But if you have none, well good for you...");
+		
+		
 	}
 }
