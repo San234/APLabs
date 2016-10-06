@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class nothing
 {	
+	static int exp;
 	public static void main(String[]args)
 	{
 		Scanner up = new Scanner(System.in);
@@ -15,7 +16,7 @@ public class nothing
 		int hp =  rand.nextInt(180) + 110;
 		int atk = rand.nextInt(64) + 36;
 		int def = rand.nextInt(48) + 32;
-		int exp = 0;
+		exp = exp;
 		int level = 5;
 		
 		you.stat(user_name, hp, atk, def, exp,level);
@@ -25,22 +26,23 @@ public class nothing
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
 		
-		exp = exp + exp;
-		
 		String a = "atk";
 		String b = "hp";
 		String c = "def";
 		String d = "exp";
 		String e = "Level";
-			if(exp >= 200){
+		if(exp >= 200){
+			atk = atk + 3;
+			def = def + 3;
+			hp = hp + 5;
 			level = level + 1;
 			exp = exp - 200;
 		}
+	
 		System.out.printf("-----------------" + "%2S" + "-------------\n", user_name);
 		System.out.printf("|" + "%8S" + " = " + "%5s" + "%8S" + " = " + "%6s" + "|\n", b, hp, a, atk);
 		System.out.printf("|" + "%8S" + " = " + "%5s" + "%8S" + " : " + "%6s" + "|\n", c, def, d, exp);
-		System.out.printf("|" + "%17S" + " : " + "%-13s" + "|\n",e , level);
-				
+		System.out.printf("|" + "%17S" + " : " + "%-13s" + "|\n",e , level);			
 		System.out.print("Would you go hunting?\n");
 		String hunt_ask = up.nextLine();
 		if(hunt_ask.equals("y") || hunt_ask.equals("yes"))
@@ -49,7 +51,8 @@ public class nothing
 		}
 		else
 		{
-			System.exit(0);
+			System.out.println("Wrong!");
+			you.stat(user_name,hp,atk,def,exp,level);
 		}
 
 	}
@@ -65,14 +68,37 @@ public class nothing
 		String c = "def";
 		String d = "exp";
 		
+		String mon_kind1 = "of Happy";
+		String mon_kind2 = "of Fury";
+		String mon_kind3 = "of Sad";
+		String mon_kind4 = "of Enjoy";
+		
 		int mon_hp =  rand.nextInt(60) + 40;
 		int mon_atk = rand.nextInt(24) + 12;
 		int mon_def = rand.nextInt(30) + 15;
 		
-	
-		
 		System.out.println("!!Monster Appeared!!");
-		System.out.printf("----------------" + "%2S" + "-------------\n", mon_name);
+		System.out.println("				|#|");
+		System.out.println("				|##|");
+		System.out.println("				|##|");
+		System.out.println("				 |#|");
+		System.out.println("				 |#|");
+		System.out.println("				|##|");
+		System.out.println("				|#|");
+		System.out.println("				|##|");
+		System.out.println("			   |####|");
+		System.out.println("	  @@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println("	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println("  @@@@@@@@@@@00000000@@@@@@@@@@@@@@@@");
+		System.out.println(" @@@@@@@@@@00%%%%%%%000@@@@@@@@@@@@@@@@");
+		System.out.println(" @@@@@@@@@@00%%%%%%%%00@@@@@@@@@@@@@@@@");
+		System.out.println(" @@@@@@@@@@0%%%%%%%%%%0@@@@@@@@@@@@@@@@");
+		System.out.println(" @@@@@@@@@@0%%%%%%%%%%0@@@@@@@@@@@@@@@@");
+		System.out.println(" @@@@@@@@@@00%%%%%%%%00@@@@@@@@@@@@@@@@");
+		System.out.println(" @@@@@@@@@@@0000000000@@@@@@@@@@@@@@@@@");
+		System.out.println("   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		
+		System.out.printf("|" + "%16S" + " %-16s" + "|\n", mon_name, mon_kind1);
 		System.out.printf("|" + "%8S" + " = " + "%5s" + "%8S" + " = " + "%6s" + "|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|" + "%8S" + " = " + "%5s" + "                 |\n", c, mon_def);
 		
@@ -117,15 +143,22 @@ public class nothing
 			mon_hp = 0;
 		}
 		
-		System.out.printf("----------------" + "%2S" + "-------------\n", mon_name);
+		System.out.printf("|" + "%16S" + " %-16s" + "|\n", mon_name, mon_kind1);
 		System.out.printf("|" + "%8S" + " = " + "%5s" + "%8S" + " = " + "%6s" + "|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|" + "%8S" + " = " + "%5s" + "                 |\n", c, mon_def);
 		System.out.println("\"Erhdas\" got damaged by " + actual_a);
-		System.out.println("\"Erdas\" used \'Fireball\'!\nYou got burned by " + mon_atk);
+		System.out.println("\"Erdas\" used \'Fireball\'!\nYou got burned by " + mon_atk);	
 		
+		if(hp <= 0){
+			hp = 0;
+			System.out.printf("%S died!\n", user_name);
+			System.out.println("!!!GAME OVER!!!");
+			System.exit(0);
+		}
 		if(mon_hp <= 0){
-			exp = rand.nextInt(100) + 75;
-			System.out.println("!!" + mon_name + " died!!\nYou've earned " + exp + " points!!");
+			int added_exp = rand.nextInt(100) + 75 + exp;
+			System.out.println("!!" + mon_name + " died!!\nYou've earned " + added_exp + " points!!");
+			exp = exp + added_exp;			
 			you.stat(user_name, hp, atk, def, exp, level);
 		}
 		else if(mon_hp > 0){
