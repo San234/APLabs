@@ -28,17 +28,17 @@ public class adress
 
 		
 		String full_address = City_name + ", " + State_name + ", " + Zip_code;
-		System.out.printf("------------------------------\n");
+		System.out.printf("-----------------------\n");
 		formatting.format(Full_name);
 		formatting.format(Your_address);
 		formatting.format(full_address);
-		System.out.printf("------------------------------\n");
+		System.out.printf("-----------------------\n");
 
 		
 		System.out.println(Full_name + " lives on " + full_address);
 	}
 	public void format(String item)
 	{
-		System.out.printf("|" + "%15S\n", item);
+		System.out.printf("| %15S \n", item);
 	}
 }
