@@ -29,9 +29,9 @@ public class IDCard
 		sub_name = up.nextLine();
 		
 		System.out.printf("******************************\n");
-		System.out.printf("*" + "%15s" + "%13s" + "*\n", s_name, y_name);
-		System.out.printf("*" + "%15S" + "%13S" + "*\n", f_name, l_name);
-		System.out.printf("*" + "%15s" + "%13s" + "*\n", title, sub_name);
+		System.out.printf("*%15s%13s*\n", s_name, y_name);
+		System.out.printf("*%15S13S*\n", f_name, l_name);
+		System.out.printf("*%15s%13s*\n", title, sub_name);
 		System.out.printf("******************************");
 	}
 }
