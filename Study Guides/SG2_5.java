@@ -5,42 +5,19 @@ public class SG2_5
 	public static void main(String[]args)
 	{
 		Scanner kb = new Scanner(System.in);
-		SG2_5 var = new SG2_5();
+		System.out.println("Please enter your first number: ");
+		double num1 = kb.nextDouble();
+		System.out.println("Please enter your first number: ");
+		double num2 = kb.nextDouble();
+		System.out.println("Please enter your first number: ");
+		double num3 = kb.nextDouble();
 		
-		System.out.println("Please enter item1 : ");
-		String i1 = kb.nextLine();
-		System.out.println("Now enter the price : ");
-		double p1 = kb.nextDouble();
-		kb.nextLine();
+		double average = calcAvg(num1,num2,num3);
 		
-		System.out.println("Please enter item2 : ");
-		String i2 = kb.nextLine();
-		System.out.println("Now enter the price : ");
-		System.out.println("Now enter the price : ");
-		double p2 = kb.nextDouble();
-		kb.nextLine();
-		
-		System.out.println("Please enter item2 : ");
-		String i3 = kb.nextLine();
-		System.out.println("Now enter the price : ");
-		System.out.println("Now enter the price : ");
-		double p3 = kb.nextDouble();
-		
-		double subtotal = p1+p2+p3;
-		double tax = subtotal * 0.08;
-		double total = subtotal + tax;
-		
-		System.out.println("_________________________");
-		var.format(i1,p1);
-		var.format(i2,p2);
-		var.format(i3,p3);
-		var.format("Subtotal : ",subtotal);
-		var.format("Tax : ",tax);
-		var.format("Total: ", total);
-		
+		System.out.printf("The average of your 3 numbers is %.3f", average);
 	}
-	public void format(String one, double two)
+	public static double calcAvg(double one, double two, double three)
 	{
-		System.out.printf("* %15s........%15.2f\n",one,two);	
+		return (one + two + three)/3;	
 	}
 }

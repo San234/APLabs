@@ -55,6 +55,7 @@ public class nothing
 		if(act_ask.equals("hunt") || act_ask.equals("Hunt"))
 		{
 			if(level % 10 == 0){
+				ErhdasEnc = 4;
 				System.out.println("!!!WARNING!!!");
 				you.bosshunt(user_name, hp, atk, def, exp,level, ErhdasEnc,gold,item);
 			}
@@ -286,9 +287,9 @@ public class nothing
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  3 * rand.nextInt(80) + 40;
-		int mon_atk = rand.nextInt(21) + 4;
-		int mon_def = rand.nextInt(50) + 32;
+		int mon_hp =  3 * (rand.nextInt(80) + 40);
+		int mon_atk = 3 * (rand.nextInt(52) + 4);
+		int mon_def = 2 * (rand.nextInt(50) + 32);
 		
 		System.out.println("!!BOSS Appeared!!");
 		System.out.println("				                                 |##| ");
@@ -298,27 +299,29 @@ public class nothing
 		System.out.println("				       	  @@@@@@@@@@@@@@@@@	 |###|");
 		System.out.println("			|#|         @@@@@@@@@@@@@@@@@@@@@@@          |#|   |#|");																	
 		System.out.println("	 		 |#| |###|@@@@@@@@@@@@@@@@@@@@@@@@@@@@        |#||##|");
-		System.out.println("	          |#####|@@@@@@@@000000000@@@@@@@@@@@@|##|    |###|");
-		System.out.println("                    @@@@@@@000%%%%%%%%%%%%@@@@@@@@@|########");
-		System.out.println("                    @@@@@@00%%%%%%%%%%%%%%%@@@@@@@@@|####|");
-		System.out.println("                    @@@@@@00%%%%%%%%%%%%%%%@@@@@@@@@");
-		System.out.println("                	@@@@@@00%%%%%%%%%%%%%%%@@@@@@@@@");
-		System.out.println("                    @@@@@@00%%%%%%%%%%%%%%%@@@@@@@@@");
-		System.out.println("                    @@@@@@00%%%%%%%%%%%%%%%@@@@@@@@@");
-		System.out.println("                    @@@@@@00%%%%%%%%%%%%%%%@@@@@@@@@");
-		System.out.println("                    @@@@@@00%%%%%%%%%%%%%%@@@@@@@@@@");
-		System.out.println("                    @@@@@@00%%%%%%%%%%@@@@@@@@@@@@@@");
-		System.out.println("           		    @@@@@@00@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("                    @@@@@@@00@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println("	          |#####|@@@@@@@@00000000000@@@@@@@@@@|##|    |###|");
+		System.out.println("                    @@@@@@@000%%%%%%%%%000@@@@@@@@@|########");
+		System.out.println("                    @@@@@@00%%%%%%%%%%%%000@@@@@@@@@|####|");
+		System.out.println("                    @@@@@@00%%%%%%%%%%%%000@@@@@@@@@");
+		System.out.println("                	@@@@@@00%%%%%%%%%%%%000@@@@@@@@@");
+		System.out.println("                    @@@@@@00%%%%%%%%%%%%000@@@@@@@@@");
+		System.out.println("                    @@@@@@00%%%%%%%%%%%%000@@@@@@@@@");
+		System.out.println("                    @@@@@@00%%%%%%%%%%%%000@@@@@@@@@");
+		System.out.println("                    @@@@@@00%%%%%%%%%%%%000@@@@@@@@@");
+		System.out.println("                    @@@@@@00%%%%%%%%%%%%000@@@@@@@@@");
+		System.out.println("           		    @@@@@@00%%%%%%%%%%%%000@@@@@@@@@");
+		System.out.println("                    @@@@@@@00%%%%%%%%%%000@@@@@@@@@@");
 		System.out.println("                    @@@@@@@@@00000000000@@@@@@@@@@@@");
-		System.out.println("                     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("                      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println("                     @@@@@@@@@@@@@@@@@@@@@@@@@@@@-----");
+		System.out.println("                      @@@@@@@@@@@@@@@@@@@@@@@@@------");
+		System.out.println("                      --------------------------**@***");
+		System.out.println("                     ****************************&@***");
+		System.out.println("                    **********************@@@@******@@");
+		System.out.println("                    ***************************@&&&@****");
+		System.out.println("                   &&&&&&&&********************&&&&&****");
+		System.out.println("                   &&&&&&&&*******************&&&&&&&***");
 		
-		System.out.printf("|%16S %-16s|\n", mon_name, mon_kind4);
+		System.out.printf("|%16S %-16s|\n", mon_name, mon_kind3);
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
@@ -359,7 +362,9 @@ public class nothing
 		Random rand = new Random();
 		
 		hp = hp - mon_atk;
-			
+		
+	
+		
 		String mon_kind1 = "of Happy";
 		int actual_a = atk - mon_def;
 		if(actual_a <= 0){
@@ -375,29 +380,41 @@ public class nothing
 		else if(ErhdasEnc == 3){
 			mon_kind1 = "of Enjoy";
 		}
+		else if(ErhdasEnc == 4){
+			mon_kind1 = "of Sad";
+		}
 		
 		System.out.printf("|%16S %-16s|\n", mon_name, mon_kind1);
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		System.out.printf("\"Erhdas %S\" got damaged by " + actual_a + "\n", mon_kind1);
 		if(mon_hp > 0){
-			System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
-			you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name,level,ErhdasEnc,gold,item);
+			System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);
 			if(hp <= 0){
-				hp = 0;
-				System.out.printf("%S died!\n", user_name);
-				System.out.println("!!!GAME OVER!!!");
-				System.exit(0);
+			hp = 0;
+			System.out.printf("%S died!\n", user_name);
+			System.out.println("!!!GAME OVER!!!");
+			System.exit(0);
 			}
+			you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name,level,ErhdasEnc,gold,item);
+			
 		}
 		else if(mon_hp <= 0){
 			int added_exp = rand.nextInt(100) + 75;
+			if(ErhdasEnc == 4){
+				added_exp = 3 * (rand.nextInt(150) + 115);
+			}
 			int added_gold = rand.nextInt(75) + 43;
+			if(ErhdasEnc == 4){
+				added_gold = 3 * (rand.nextInt(125) + 75);
+			}
 			System.out.println("!!" + mon_name + " died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!");
 			exp = exp + added_exp;			
 			gold = gold + added_gold;
 			you.stat(user_name, hp, atk, def, exp, level, gold, item);
 		}
+		
+	
 	}
 	public static void defense(String a, String b, String c, String d, int atk, int mon_def, int mon_atk, int mon_hp, String mon_name, int def, int exp, String user_name, int hp, int level,int ErhdasEnc,int gold, int item)
 	{
