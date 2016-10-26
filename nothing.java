@@ -4,6 +4,10 @@ import java.util.Random;
 public class nothing
 {	
 	static int hp;
+	static int atk;
+	static int def;
+	static int item;
+	static int level;
 	static int exp;
 	static int gold;
 	public static void main(String[]args)
@@ -15,28 +19,22 @@ public class nothing
 		System.out.print("Enter your nickname :\n");
 		String user_name = up.nextLine();
 		
-		int hp =  rand.nextInt(180) + 110;
-		int atk = rand.nextInt(64) + 36;
-		int def = rand.nextInt(48) + 32;
+		hp =  rand.nextInt(180) + 110;
+		atk = rand.nextInt(64) + 36;
+		def = rand.nextInt(48) + 32;
 		exp = exp;
 		gold = gold;
-		int item = 0;
-		int level = 5;
+		item = 0;
+		level = 5;
 		
-		you.stat(user_name, hp, atk, def, exp,level,gold,item);
+		you.stat(user_name);
 	}
-	public static void stat(String user_name, int hp, int atk, int def, int exp, int level,int gold, int item)
+	public static void stat(String user_name)
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
 		Random rand = new Random();
 		
-		String a = "atk";
-		String b = "hp";
-		String c = "def";
-		String d = "exp";
-		String e = "Level";
-		String f = "Gold";
 		while(exp >= 200){
 			atk = atk + 5;
 			def = def + 5;
@@ -48,9 +46,9 @@ public class nothing
 		int ErhdasEnc = rand.nextInt(3)+1;
 	
 		System.out.printf("-----------------" + "%2S" + "-------------\n", user_name);
-		System.out.printf("|%8S = %5s%8S = %6s|\n", b, hp, a, atk);
-		System.out.printf("|%8S = %5s%8S : %6s|\n", c, def, d, exp);
-		System.out.printf("|%8S : %5s%8S : %6s|\n",e , level,f , gold);			
+		System.out.printf("|%8S = %5s%8S = %6s|\n", "hp", hp,"atk", atk);
+		System.out.printf("|%8S = %5s%8S : %6s|\n", "def", def, "exp", exp);
+		System.out.printf("|%8S : %5s%8S : %6s|\n","Level" , level, "Gold" , gold);			
 		System.out.print("What would you do? [Hunt Shop]\n");
 		String act_ask = up.nextLine();
 		if(act_ask.equals("hunt") || act_ask.equals("Hunt"))
@@ -58,29 +56,29 @@ public class nothing
 			if(level % 10 == 0){
 				ErhdasEnc = 4;
 				System.out.println("!!!WARNING!!!");
-				you.bosshunt(user_name, hp, atk, def, exp,level, ErhdasEnc,gold,item);
+				you.bosshunt(user_name, ErhdasEnc);
 			}
 			if (ErhdasEnc == 1){
-				you.hunt1(user_name, hp, atk, def, exp,level, ErhdasEnc,gold,item);
+				you.hunt1(user_name, ErhdasEnc);
 			}
 			else if(ErhdasEnc == 2){
-				you.hunt2(user_name, hp, atk, def, exp,level,ErhdasEnc,gold,item);
+				you.hunt2(user_name, ErhdasEnc);
 			}
 			else if(ErhdasEnc == 3){
-				you.hunt3(user_name, hp, atk, def, exp,level,ErhdasEnc,gold,item);
+				you.hunt3(user_name, ErhdasEnc);
 			}
 		}
 		if(act_ask.equals("Shop")||act_ask.equals("shop")){
-			you.shop(user_name, hp, atk, def, exp,level, ErhdasEnc, gold,item);
+			you.shop(user_name, ErhdasEnc);
 		}
 		else
 		{
 			System.out.println("Wrong!");
-			you.stat(user_name,hp,atk,def,exp,level,gold,item);
+			you.stat(user_name);
 		}
 
 	}
-	public static void shop(String user_name, int hp, int atk, int def, int exp, int level, int ErhdasEnc,int gold, int item)
+	public static void shop(String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
@@ -106,14 +104,14 @@ public class nothing
 				System.out.println("Thank you!");
 				item += 1;
 				gold -= 100;
-				you.shop(user_name, hp, atk, def, exp,level, ErhdasEnc, gold,item);
+				you.shop(user_name, ErhdasEnc);
 			}
 		}
 		else{
-			you.stat(user_name,hp,atk,def,exp,level,gold,item);
+			you.stat(user_name);
 		}
 	}
-	public static void hunt1(String user_name, int hp, int atk, int def, int exp, int level, int ErhdasEnc,int gold, int item)
+	public static void hunt1(String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
@@ -159,9 +157,9 @@ public class nothing
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
-		you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name, level, ErhdasEnc,gold,item);
+		you.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
 	}
-	public static void hunt2(String user_name, int hp, int atk, int def, int exp, int level,int ErhdasEnc,int gold, int item)
+	public static void hunt2(String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
@@ -211,9 +209,9 @@ public class nothing
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
-		you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name, level,ErhdasEnc,gold,item);
+		you.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);	
 	}
-	public static void hunt3(String user_name, int hp, int atk, int def, int exp, int level,int ErhdasEnc,int gold, int item)
+	public static void hunt3(String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
@@ -269,9 +267,9 @@ public class nothing
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
-		you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name, level,ErhdasEnc, gold,item);
+		you.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
 	}
-	public static void bosshunt(String user_name, int hp, int atk, int def, int exp, int level,int ErhdasEnc,int gold, int item)
+	public static void bosshunt(String user_name,int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
@@ -326,9 +324,9 @@ public class nothing
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
-		you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name, level,ErhdasEnc, gold,item);
+		you.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
 	}
-	public static void askHunt(String a, String b, String c, String d,  int hp, int atk, int def,int exp, int mon_atk,String user_name,  int mon_def, int mon_hp, String mon_name, int level,int ErhdasEnc,int gold, int item)
+	public static void askHunt(String a, String b, String c, String d, int mon_atk,String user_name,  int mon_def, int mon_hp, String mon_name,int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
@@ -339,32 +337,30 @@ public class nothing
 		
 		if(user_command.equals("attack")||user_command.equals("Attack"))
 		{
-			you.fight1(a,b,c,d,atk,def,mon_atk,hp,user_name,exp,mon_def,mon_hp,mon_name,level,ErhdasEnc,gold,item);
+			you.fight1(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 		}
 		else if(user_command.equals("Flee")||user_command.equals("flee"))
 		{
-			you.stat(user_name, hp, atk, def, exp, level,gold,item);
+			you.stat(user_name);
 		}
 		else if(user_command.equals("defend")||user_command.equals("Defend"))
 		{
-			you.defense(a,b,c,d,atk,mon_def,mon_hp,mon_atk, mon_name, def, exp, user_name, hp, level,ErhdasEnc,gold,item);
+			you.defense(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		else if(user_command.equals("Item")||user_command.equals("item")){
-			you.useItem(a,b,c,d,atk,mon_def,mon_hp,mon_atk, mon_name, def, exp, user_name, hp, level,ErhdasEnc,gold,item);
+			you.useItem(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		else
 		{
-			you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name, level,ErhdasEnc,gold,item);
+			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 		}
 	}
-	public static void fight1(String a, String b, String c, String d, int atk, int def, int mon_atk, int hp, String user_name, int exp, int mon_def, int mon_hp, String mon_name, int level,int ErhdasEnc,int gold, int item)
+	public static void fight1(String a, String b, String c, String d,int mon_atk,String user_name,int mon_def, int mon_hp, String mon_name, int ErhdasEnc)
 	{
 		nothing you = new nothing();
 		Random rand = new Random();
 		
 		hp = hp - mon_atk;
-		
-	
 		
 		String mon_kind1 = "of Happy";
 		int actual_a = atk - mon_def;
@@ -397,7 +393,7 @@ public class nothing
 			System.out.println("!!!GAME OVER!!!");
 			System.exit(0);
 			}
-			you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name,level,ErhdasEnc,gold,item);
+			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			
 		}
 		else if(mon_hp <= 0){
@@ -412,12 +408,12 @@ public class nothing
 			System.out.println("!!" + mon_name + " died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!");
 			exp = exp + added_exp;			
 			gold = gold + added_gold;
-			you.stat(user_name, hp, atk, def, exp, level, gold, item);
+			you.stat(user_name);
 		}
 		
 	
 	}
-	public static void defense(String a, String b, String c, String d, int atk, int mon_def, int mon_atk, int mon_hp, String mon_name, int def, int exp, String user_name, int hp, int level,int ErhdasEnc,int gold, int item)
+	public static void defense(String a, String b, String c, String d,int mon_def, int mon_atk, int mon_hp, String mon_name,  String user_name,int ErhdasEnc)
 	{
 		nothing you = new nothing();
 		
@@ -433,9 +429,9 @@ public class nothing
 		
 		System.out.println(user_name + " got damaged by " + actual_d);
 		
-		you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name,level,ErhdasEnc,gold,item);
+		you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 	}
-	public static void useItem(String a, String b, String c, String d, int atk, int mon_def, int mon_hp ,int mon_atk, String mon_name, int def, int exp, String user_name, int hp, int level,int ErhdasEnc,int gold, int item)
+	public static void useItem(String a, String b, String c, String d,int mon_def, int mon_hp ,int mon_atk, String mon_name, String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
@@ -457,7 +453,7 @@ public class nothing
 		if(useHp.equals("HP")||useHp.equals("hp")){
 			if(item == 0){
 				System.out.println("You don't have any!!");
-				you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name, level,ErhdasEnc, gold,item);
+				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 			else if(item >= 1){
 				hp = hp - mon_atk;
@@ -465,12 +461,12 @@ public class nothing
 				hp += 200;
 				item -= 1;
 				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
-				you.askHunt(a,b,c,d,hp,atk,def,exp,mon_atk,user_name,mon_def,mon_hp,mon_name, level,ErhdasEnc, gold,item);
+				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 		}
 		else{
 			System.out.println("Wrong!");
-			you.useItem(a,b,c,d,atk,mon_def,mon_hp,mon_atk, mon_name, def, exp, user_name, hp, level,ErhdasEnc,gold,item);
+			you.useItem(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 	}
 }
