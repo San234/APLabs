@@ -4,12 +4,15 @@ import java.util.Random;
 public class nothing
 {	
 	static int hp;
+	static int mp;
 	static int atk;
+	static int s_atk;
 	static int def;
 	static int item;
 	static int level;
 	static int exp;
 	static int gold;
+	static int skill;
 	public static void main(String[]args)
 	{
 		Scanner up = new Scanner(System.in);
@@ -20,7 +23,9 @@ public class nothing
 		String user_name = up.nextLine();
 		
 		hp =  rand.nextInt(180) + 110;
+		mp = rand.nextInt(110) + 70;
 		atk = rand.nextInt(64) + 36;
+		s_atk = rand.nextInt(70) + 40;
 		def = rand.nextInt(48) + 32;
 		exp = exp;
 		gold = gold;
@@ -42,12 +47,15 @@ public class nothing
 			level = level + 1;
 			exp = exp - 200;
 		}
-	
+		if(level % 8 == 0){
+			skill += 1;
+		}
 		int ErhdasEnc = rand.nextInt(3)+1;
 	
 		System.out.printf("-----------------" + "%2S" + "-------------\n", user_name);
 		System.out.printf("|%8S = %5s%8S = %6s|\n", "hp", hp,"atk", atk);
-		System.out.printf("|%8S = %5s%8S : %6s|\n", "def", def, "exp", exp);
+		System.out.printf("|%8S = %5s%8S = %6s|\n", "mp", mp,"def", def);
+		System.out.printf("|%8S = %5s%8S : %6s|\n", "s_atk", s_atk, "exp", exp);
 		System.out.printf("|%8S : %5s%8S : %6s|\n","Level" , level, "Gold" , gold);			
 		System.out.print("What would you do? [Hunt Shop]\n");
 		String act_ask = up.nextLine();
@@ -332,7 +340,7 @@ public class nothing
 		nothing you = new nothing();
 		Random rand = new Random();
 
-		System.out.print("What would you do? [Attack Flee Defend Item]\n");
+		System.out.print("What would you do? [Attack Flee Defend Item Spell]\n");
 		String user_command = up.nextLine();
 		
 		if(user_command.equals("attack")||user_command.equals("Attack"))
@@ -350,6 +358,9 @@ public class nothing
 		else if(user_command.equals("Item")||user_command.equals("item")){
 			you.useItem(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
+		else if(user_command.equals("Spell")||user_command.equals("spell")){
+			you.useSkill(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
+		}
 		else
 		{
 			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
@@ -360,7 +371,7 @@ public class nothing
 		nothing you = new nothing();
 		Random rand = new Random();
 		
-		hp = hp - mon_atk;
+	
 		
 		String mon_kind1 = "of Happy";
 		int actual_a = atk - mon_def;
@@ -387,6 +398,7 @@ public class nothing
 		System.out.printf("\"Erhdas %S\" got damaged by " + actual_a + "\n", mon_kind1);
 		if(mon_hp > 0){
 			System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);
+			hp = hp - mon_atk;
 			if(hp <= 0){
 			hp = 0;
 			System.out.printf("%S died!\n", user_name);
@@ -466,6 +478,56 @@ public class nothing
 		}
 		else{
 			System.out.println("Wrong!");
+			you.useItem(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
+		}
+	}
+	public static void useSkill(String a, String b, String c, String d,int mon_def, int mon_hp ,int mon_atk, String mon_name, String user_name, int ErhdasEnc)
+	{
+		Scanner up = new Scanner(System.in);
+		nothing you = new nothing();
+		Random rand = new Random();
+		
+		if(mon_hp <= 0){
+			mon_hp = 0;
+		}	
+		String mon_kind1 = "of Happy";
+		if(ErhdasEnc == 2){
+			mon_kind1 = "of Fury";
+		}
+		else if(ErhdasEnc == 3){
+			mon_kind1 = "of Enjoy";
+		}
+		
+		System.out.print("What skill would you use? [Fireball]\n");
+		String useFire = up.nextLine();
+		if(useFire.equals("Fireball")||useFire.equals("fireball")){
+			if(skill == 0){
+				System.out.println("You don't learn any!!");
+				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			}
+			else if(skill >= 1){
+				mon_hp -= s_atk;
+				System.out.println("You used Fireball!!");
+				mp -= 45;
+				
+				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
+				if(mon_hp > 0){
+				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);
+				hp = hp - mon_atk;
+				if(hp <= 0){
+				hp = 0;
+				System.out.printf("%S died!\n", user_name);
+				System.out.println("!!!GAME OVER!!!");
+				System.exit(0);
+			}
+			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			
+		}
+				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			}
+		}
+		else{
+			System.out.println("Wrong spell!");
 			you.useItem(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 	}
