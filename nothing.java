@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class nothing
 {	
+	static int hp;
 	static int exp;
 	static int gold;
 	public static void main(String[]args)
