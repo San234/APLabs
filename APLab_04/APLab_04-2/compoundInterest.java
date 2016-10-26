@@ -14,7 +14,7 @@ public class compoundInterest
 		double P = up.nextDouble();
 		up.nextLine();
 		
-		System.out.print("Enter the interest rate: \n");
+		System.out.print("Enter the interest rate in %: \n");
 		double r = up.nextDouble();
 		up.nextLine();
 		
@@ -39,6 +39,6 @@ public class compoundInterest
 	}
 	public double monthly(Double tt, Double t, Double n, Double P,Double r)
 	{
-		return (tt) / (3.74*12);
+		return tt/(t*12);
 	}
 }
