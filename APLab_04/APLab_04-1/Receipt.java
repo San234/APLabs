@@ -39,13 +39,16 @@ public class Receipt
 		
 		System.out.println("<<<<<<<<<<<<<<<<__Receipt__>>>>>>>>>>>>>>>>");
 		System.out.println("                                           ");
-		System.out.printf("*%15S ........\t$%11.2f\n", item1, price1);
-		System.out.printf("*%15S ........\t$%11.2f\n", item2, price2);
-		System.out.printf("*%15S ........\t$%11.2f\n\n", item3, price3);
-		System.out.printf("*%15S........\t$%11.2f\n","Subtotal",subtotal);
-		System.out.printf("*%15S........\t$%11.2f\n","Tax",tax);
-		System.out.printf("*%15S........\t$%11.2f\n","Total",total);
+		format(item1, price1);
+		format(item2, price2);
+		format("Subtotal",subtotal);
+		format(item3, price3);
+		format("Tax",tax);
+		format("Total",total);
 		System.out.println("___________________________________________");
 		System.out.println("\t   *Thank you for your Support*");
+	}
+	public static void format(String one, double two){
+		System.out.printf("*%15S ........\t$%11.2f\n", one, two);
 	}
 }

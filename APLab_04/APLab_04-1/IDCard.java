@@ -39,9 +39,13 @@ public class IDCard
 		sub_name = up.nextLine();
 		
 		System.out.printf("******************************\n");
-		System.out.printf("*%15s%13s*\n", s_name, y_name);
-		System.out.printf("*%15S%13S*\n", f_name, l_name);
-		System.out.printf("*%15s%13s*\n", title, sub_name);
+		format(s_name, y_name);
+		format(f_name, l_name);
+		format(title, sub_name);
 		System.out.printf("******************************");
+	}
+	public static void format(String one, String two)
+	{
+		System.out.printf("*%15s%13s*\n", one, two);
 	}
 }
