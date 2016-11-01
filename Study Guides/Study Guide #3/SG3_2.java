@@ -5,7 +5,7 @@ public class SG3_2
 	static int n;
 	public static void main(String[]args)
 	{
-		System.out.println("D,D,A,D,D,B,B,D");
+		System.out.println("D,D,A,D(C),D,B(A),B(C),D");
 		
 		int MAX = 1;
 		int total = 1;

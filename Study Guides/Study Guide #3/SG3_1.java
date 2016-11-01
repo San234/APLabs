@@ -20,23 +20,18 @@ public class SG3_1
 	
 	public static String calcBond(double one, double two)
 	{
-		String bondType = "";
 		if(one > two){
-			if(one - two > 1.6)
-				bondType = "ionic";
-			else{
-				bondType = "Covalent";
+			if(one - two > 1.6){
+				return "ionic";
 			}
+				return "covalent";
 		}
-		else if(two > one){
-			if(two - one > 1.6)
-				bondType = "ionic";
-			else{
-				bondType = "Covalent";
+			if(two - one > 1.6){
+				return "ionic";
 			}
+			return "Covalent";
 		}
-		return bondType;
-	}
+	
 }
 
 
