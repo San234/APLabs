@@ -9,6 +9,8 @@ public class nothing
 	static int s_atk;
 	static int def;
 	static int item;
+	static int h_item;
+	static int m_item;
 	static int level;
 	static int exp;
 	static int gold;
@@ -31,6 +33,8 @@ public class nothing
 		gold = gold;
 		item = 0;
 		level = 5;
+		h_item = 0;
+		m_item = 0;
 		
 		you.stat(user_name);
 	}
@@ -43,12 +47,14 @@ public class nothing
 		while(exp >= 200){
 			atk = atk + 5;
 			def = def + 5;
+			s_atk = s_atk + 8;
 			hp = hp + 50;
 			level = level + 1;
 			exp = exp - 200;
 		}
 		if(level % 8 == 0){
 			skill += 1;
+			System.out.print("!!You learned \"Fireball\"!!\n");
 		}
 		int ErhdasEnc = rand.nextInt(3)+1;
 	
@@ -106,12 +112,32 @@ public class nothing
 		String shop_ask = up.nextLine();
 		
 		if(shop_ask.equals("y")||shop_ask.equals("yes")){
-			System.out.print("What would you buy? [HP]\n");
+			System.out.print("What would you buy? [HP MP]\n");
 			String choose_item = up.nextLine();
-			if(choose_item.equals("hp")||choose_item.equals("HP 100G")){
+			if(gold <= 0){
+				System.out.println("You don't have enough money!!!");
+				you.stat(user_name);
+			}
+			if(choose_item.equals("hp")||choose_item.equals("HP")){
+				
 				System.out.println("Thank you!");
+				h_item += 1;
 				item += 1;
 				gold -= 100;
+				you.shop(user_name, ErhdasEnc);
+			}
+			else if(choose_item.equals("mp")||choose_item.equals("MP")){
+				if(gold <= 0){
+					System.out.println("You don't have enough money!!!");
+					you.stat(user_name);
+				}
+				System.out.println("Thank you!");
+				m_item += 1;
+				item += 1;
+				gold -= 100;
+				you.shop(user_name, ErhdasEnc);
+			}
+			else{
 				you.shop(user_name, ErhdasEnc);
 			}
 		}
@@ -356,9 +382,17 @@ public class nothing
 			you.defense(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		else if(user_command.equals("Item")||user_command.equals("item")){
+			if(item <= 0){
+				System.out.println("You don't have any!!");
+				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			}
 			you.useItem(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		else if(user_command.equals("Spell")||user_command.equals("spell")){
+			if(mp <= 0){
+				System.out.println("You don't have enough MP!!");
+				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			}
 			you.useSkill(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		else
@@ -400,10 +434,10 @@ public class nothing
 			System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);
 			hp = hp - mon_atk;
 			if(hp <= 0){
-			hp = 0;
-			System.out.printf("%S died!\n", user_name);
-			System.out.println("!!!GAME OVER!!!");
-			System.exit(0);
+				hp = 0;
+				System.out.printf("%S died!\n", user_name);
+				System.out.println("!!!GAME OVER!!!");
+				System.exit(0);
 			}
 			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			
@@ -417,7 +451,7 @@ public class nothing
 			if(ErhdasEnc == 4){
 				added_gold = 3 * (rand.nextInt(125) + 75);
 			}
-			System.out.println("!!" + mon_name + " died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!");
+			System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n", mon_kind1);
 			exp = exp + added_exp;			
 			gold = gold + added_gold;
 			you.stat(user_name);
@@ -460,18 +494,32 @@ public class nothing
 			mon_kind1 = "of Enjoy";
 		}
 		
-		System.out.print("What item would you use? [HP]\n");
+		System.out.print("What item would you use? [HP MP]\n");
 		String useHp = up.nextLine();
 		if(useHp.equals("HP")||useHp.equals("hp")){
-			if(item == 0){
+			if(h_item == 0){
 				System.out.println("You don't have any!!");
 				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
-			else if(item >= 1){
+			else if(h_item >= 1){
 				hp = hp - mon_atk;
-				System.out.println("You used HP potion!!");
+				System.out.println("You used HP potion!!\nYour HP refilled by \"200\"");
 				hp += 200;
 				item -= 1;
+				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
+				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			}
+		}
+		else if(useHp.equals("MP")||useHp.equals("mp")){
+			if(m_item == 0){
+				System.out.println("You don't have any!!");
+				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			}
+			else if(h_item >= 1){
+				hp = hp - mon_atk;
+				System.out.println("You used MP potion!!\nYour MP refilled by \"125\"");
+				mp += 125;
+				m_item -= 1;
 				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
 				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
@@ -520,8 +568,23 @@ public class nothing
 				System.out.println("!!!GAME OVER!!!");
 				System.exit(0);
 			}
+			
 			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			
+		}
+		else if(mon_hp <= 0){
+				int added_exp = rand.nextInt(100) + 75;
+				if(ErhdasEnc == 4){
+					added_exp = 3 * (rand.nextInt(150) + 115);
+				}
+				int added_gold = rand.nextInt(75) + 43;
+				if(ErhdasEnc == 4){
+					added_gold = 3 * (rand.nextInt(125) + 75);
+				}
+				System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n", mon_kind1);
+				exp = exp + added_exp;			
+				gold = gold + added_gold;
+				you.stat(user_name);
 		}
 				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
