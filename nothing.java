@@ -114,12 +114,12 @@ public class nothing
 		if(shop_ask.equals("y")||shop_ask.equals("yes")){
 			System.out.print("What would you buy? [HP MP]\n");
 			String choose_item = up.nextLine();
-			if(gold <= 0){
-				System.out.println("You don't have enough money!!!");
-				you.stat(user_name);
-			}
+			
 			if(choose_item.equals("hp")||choose_item.equals("HP")){
-				
+				if(gold <= 100){
+					System.out.println("You don't have enough money!!!");
+					you.stat(user_name);
+				}
 				System.out.println("Thank you!");
 				h_item += 1;
 				item += 1;
@@ -127,7 +127,7 @@ public class nothing
 				you.shop(user_name, ErhdasEnc);
 			}
 			else if(choose_item.equals("mp")||choose_item.equals("MP")){
-				if(gold <= 0){
+				if(gold <= 100){
 					System.out.println("You don't have enough money!!!");
 					you.stat(user_name);
 				}
