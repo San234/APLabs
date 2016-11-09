@@ -11,9 +11,7 @@ public class Cube
 		Scanner up = new Scanner(System.in);
 		Cube sa = new Cube();
 		
-		System.out.print("Enter the number of sides : ");
-		side = up.nextDouble();
-		up.nextLine();
+		side = 6;
 		
 		System.out.print("Enter the area of one side : ");
 		a = up.nextDouble();

@@ -17,9 +17,9 @@ public class Center
 		center(word2);
 		center(word3);
 		
-		System.out.println(word1);
-		System.out.println(word2);
-		System.out.println(word3);
+		System.out.println(center(word1));
+		System.out.println(center(word2));
+		System.out.println(center(word3));
 	}
 	public static String center(String a)
 	{
@@ -27,8 +27,7 @@ public class Center
 			return a;
 		}
 		else{
-			System.out.println(" " + a.substring(0) + " ");
-			return center(a);
+			return center(" " + a + " ");
 		}
 	}
 }

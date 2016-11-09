@@ -23,7 +23,7 @@ public class subWooferBoxes
 		
 		double tf = volume.volumeCalc(ti);
 		
-		System.out.printf("The volume of Subwoofer Box is " + "%.2f" + " cubic feet", tf);
+		System.out.printf("The volume of Subwoofer Box is %.2f cubic feet", tf);
 	}
 	public double volumeCalc(Double ti)
 	{
