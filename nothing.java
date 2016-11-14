@@ -27,6 +27,8 @@ public class nothing
 		System.out.print("Enter your nickname :\n");
 		String user_name = up.nextLine();
 		
+		
+		
 		hp =  rand.nextInt(180) + 110;
 		max_hp = hp;
 		mp = rand.nextInt(110) + 100;
@@ -41,8 +43,11 @@ public class nothing
 		level = 5;
 		h_item = 0;
 		m_item = 0;
-		
+		for(int i = user_name.length(); i < 38; i++){
+			user_name = ("-" + user_name + "-");
+		}
 		you.stat(user_name);
+		
 	}
 	public static void stat(String user_name)
 	{
@@ -68,7 +73,7 @@ public class nothing
 		}
 		int ErhdasEnc = rand.nextInt(3)+1;
 	
-		System.out.printf("------------------" + "%2S" + "--------------\n", user_name);
+		System.out.printf("%2S\n", user_name);
 		System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
 		System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
 		System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
