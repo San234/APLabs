@@ -57,9 +57,9 @@ public class nothing
 			max_hp += 50;
 			hp =max_hp;
 			max_mp += 30;
-			mp = max_mp
+			mp = max_mp;
 			level += 1;
-			exp -= 200;
+			exp -= max_exp;
 			max_exp = max_exp +90;
 		}
 		if(level % 8 == 0){
