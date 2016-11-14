@@ -3,7 +3,9 @@ import java.util.Random;
 
 public class nothing
 {	
+	static int max_hp;
 	static int hp;
+	static int max_mp;
 	static int mp;
 	static int atk;
 	static int s_atk;
@@ -13,6 +15,7 @@ public class nothing
 	static int m_item;
 	static int level;
 	static int exp;
+	static int max_exp;
 	static int gold;
 	static int skill;
 	public static void main(String[]args)
@@ -25,12 +28,15 @@ public class nothing
 		String user_name = up.nextLine();
 		
 		hp =  rand.nextInt(180) + 110;
-		mp = rand.nextInt(110) + 70;
+		max_hp = hp;
+		mp = rand.nextInt(110) + 100;
+		max_mp = mp;
 		atk = rand.nextInt(64) + 36;
 		s_atk = rand.nextInt(70) + 40;
 		def = rand.nextInt(48) + 32;
 		exp = exp;
-		gold = gold;
+		max_exp = 200;
+		gold = 0;
 		item = 0;
 		level = 5;
 		h_item = 0;
@@ -44,13 +50,17 @@ public class nothing
 		nothing you = new nothing();
 		Random rand = new Random();
 		
-		while(exp >= 200){
-			atk = atk + 5;
-			def = def + 5;
-			s_atk = s_atk + 8;
-			hp = hp + 50;
-			level = level + 1;
-			exp = exp - 200;
+		while(exp >= max_exp){
+			atk += 5;
+			def += 5;
+			s_atk += 8;
+			max_hp += 50;
+			hp =max_hp;
+			max_mp += 30;
+			mp = max_mp
+			level += 1;
+			exp -= 200;
+			max_exp = max_exp +90;
 		}
 		if(level % 8 == 0){
 			skill += 1;
@@ -58,11 +68,11 @@ public class nothing
 		}
 		int ErhdasEnc = rand.nextInt(3)+1;
 	
-		System.out.printf("-----------------" + "%2S" + "-------------\n", user_name);
-		System.out.printf("|%8S = %5s%8S = %6s|\n", "hp", hp,"atk", atk);
-		System.out.printf("|%8S = %5s%8S = %6s|\n", "mp", mp,"def", def);
-		System.out.printf("|%8S = %5s%8S : %6s|\n", "s_atk", s_atk, "exp", exp);
-		System.out.printf("|%8S : %5s%8S : %6s|\n","Level" , level, "Gold" , gold);			
+		System.out.printf("------------------" + "%2S" + "--------------\n", user_name);
+		System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
+		System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
+		System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
+		System.out.printf("|%8S : %5s%8S : %9s|\n","Level" , level, "Gold" , gold);			
 		System.out.print("What would you do? [Hunt Shop]\n");
 		String act_ask = up.nextLine();
 		if(act_ask.equals("hunt") || act_ask.equals("Hunt"))
@@ -505,6 +515,9 @@ public class nothing
 				hp = hp - mon_atk;
 				System.out.println("You used HP potion!!\nYour HP refilled by \"200\"");
 				hp += 200;
+				if(hp > max_hp){
+					hp = max_hp;
+				}
 				item -= 1;
 				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
 				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
@@ -519,6 +532,9 @@ public class nothing
 				hp = hp - mon_atk;
 				System.out.println("You used MP potion!!\nYour MP refilled by \"125\"");
 				mp += 125;
+				if(hp > max_mp){
+					mp = max_mp;
+				}
 				m_item -= 1;
 				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
 				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
