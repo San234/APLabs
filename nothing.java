@@ -18,7 +18,68 @@ public class nothing
 	static int max_exp;
 	static int gold;
 	static int skill;
+	static String name;
 	public static void main(String[]args)
+	{
+		Scanner up = new Scanner(System.in);
+		nothing you = new nothing();
+		Random rand = new Random();
+		
+		System.out.print("Title\n");
+		System.out.print("[Play] [Direction]\n");
+		String menu = up.nextLine();
+		
+		if(menu.equals("play")||menu.equals("Play")){
+			start();
+		}
+		else if(menu.equals("direction")||menu.equals("Direction")){
+			direction(args);
+		}
+		else{
+			main(args);
+		}
+	}
+	public static void direction(String[]args)
+	{
+		Scanner up = new Scanner(System.in);
+		
+		System.out.print("What is questionable?\n[Gameplay]\n[Abbreviation]\n[Plot]\n[nothing]\n");
+		String askDirection = up.nextLine();
+		
+		if(askDirection.equals("Gameplay")||askDirection.equals("gameplay")){
+			System.out.print("This is based on texts and you just type things that are available.\n");
+			System.out.print("For example, there will be words in brackets and those are words that you can type in.\n");
+			System.out.print("\"Hunt\" = Goes out to field and you will encounter monsters.\n");
+			System.out.print("\"Shop\" = Goes to shop and you can buy potions.\n");
+			System.out.print("\"Attack\" = Charges toward your enemy and damage equal to your attack - enemy's defense.\n");
+			System.out.print("\"Flee\" = Run away from your enemy and return to town.\n");
+		    System.out.print("\"Defend\" = guard enemy's attack, but still damaging you by its attack - your def and you will counter them.\n");
+			System.out.print("\"Item\" = Choose which potion you would drink, but still enemy will attack you.\n");
+			System.out.print("\"Spell\" = After level 8, you will learn spells. Spell penetrates enemy's defense, but consumes mp.\n\n");
+			direction(args);
+		}
+		else if(askDirection.equals("abbreviation")||askDirection.equals("Abbreviation")){
+			System.out.print("\"HP\" = Health, directly affects the game\n");
+			System.out.print("\"MP\" = Spell Cost, needs to use every spell\n");
+			System.out.print("\"ATK\" = Attack, affects your physical attack\n");
+			System.out.print("\"DEF\" = Defense, affects your defense ability\n");
+			System.out.print("\"S_ATK\" = Special Attack, affects your spell damage\n");
+			System.out.print("\"EXP\" = Experience Points, help you grow stronger\n\n");
+			direction(args);
+		}
+		else if(askDirection.equals("plot")||askDirection.equals("Plot")){
+			System.out.print("Did not think of any, yet\n\n");
+			direction(args);
+		}
+		else if(askDirection.equals("nothing")||askDirection.equals("Nothing")){
+			main(args);
+		}
+		else{
+			System.out.println("Sorry?");
+			direction(args);
+		}
+	}
+	public static void start()
 	{
 		Scanner up = new Scanner(System.in);
 		nothing you = new nothing();
@@ -27,7 +88,7 @@ public class nothing
 		System.out.print("Enter your nickname :\n");
 		String user_name = up.nextLine();
 		
-		
+		name = user_name;
 		
 		hp =  rand.nextInt(180) + 110;
 		max_hp = hp;
@@ -43,11 +104,18 @@ public class nothing
 		level = 5;
 		h_item = 0;
 		m_item = 0;
-		for(int i = user_name.length(); i < 38; i++){
+		for(int i = 0; user_name.length() < 38; i++){
 			user_name = ("-" + user_name + "-");
+			if(user_name.length() % 2 == 1 && user_name.length() == 37){
+				user_name = ("-" + user_name);
+			}
+		}
+		if(user_name.length() > 38){
+			System.out.println("!!Too long!!");
+			System.out.println("Try Again...");
+			start();
 		}
 		you.stat(user_name);
-		
 	}
 	public static void stat(String user_name)
 	{
@@ -450,7 +518,7 @@ public class nothing
 			hp = hp - mon_atk;
 			if(hp <= 0){
 				hp = 0;
-				System.out.printf("%S died!\n", user_name);
+				System.out.printf("%S died!\n", name);
 				System.out.println("!!!GAME OVER!!!");
 				System.exit(0);
 			}
@@ -474,21 +542,49 @@ public class nothing
 		
 	
 	}
-	public static void defense(String a, String b, String c, String d,int mon_def, int mon_atk, int mon_hp, String mon_name,  String user_name,int ErhdasEnc)
+	public static void defense(String a, String b, String c, String d, int mon_def, int mon_hp, int mon_atk, String mon_name,  String user_name,int ErhdasEnc)
 	{
 		nothing you = new nothing();
 		
+		String mon_kind1 = "of Happy";
+		if(mon_hp <= 0){
+			mon_hp = 0;
+		}
+		if(ErhdasEnc == 2){
+			mon_kind1 = "of Fury";
+		}
+		else if(ErhdasEnc == 3){
+			mon_kind1 = "of Enjoy";
+		}
+		else if(ErhdasEnc == 4){
+			mon_kind1 = "of Sad";
+		}
+		
 		int actual_d = mon_atk - def;
 		if(actual_d < 0){
-			actual_d = 0;
+			actual_d = 1;
 		}
 		hp = hp - actual_d;
 		
-		System.out.printf("-----------------%2S-------------\n", user_name);
-		System.out.printf("|%8S = %5s%8S = %6s|\n", b, hp, a, atk);
-		System.out.printf("|%8S = %5s%8S : %6s|\n", c, def, d, exp);
+		int actual_a = atk - (mon_def*2);
+		if(actual_a <= 0){
+			actual_a = 1;
+		}
 		
-		System.out.println(user_name + " got damaged by " + actual_d);
+		mon_hp -= actual_a;
+		if(mon_hp <= 0){
+			mon_hp = 1;
+			System.out.printf("!!\"Erdhas %S\" endured it!!\n", mon_kind1);
+		}
+		
+		System.out.printf("%2S\n", user_name);
+		System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
+		System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
+		System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
+		System.out.printf("|%8S : %5s%8S : %9s|\n","Level" , level, "Gold" , gold);
+		
+		System.out.printf("%S got damaged by " + actual_d + "\n", name);
+		System.out.printf("You countered \"Erdhas %S\" by " + actual_a + "\n", mon_kind1);
 		
 		you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 	}
@@ -589,9 +685,7 @@ public class nothing
 				System.out.println("!!!GAME OVER!!!");
 				System.exit(0);
 			}
-			
-			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
-			
+			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);	
 		}
 		else if(mon_hp <= 0){
 				int added_exp = rand.nextInt(100) + 75;
