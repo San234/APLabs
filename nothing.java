@@ -576,6 +576,9 @@ public class nothing
 			mon_hp = 1;
 			System.out.printf("!!\"Erdhas %S\" endured it!!\n", mon_kind1);
 		}
+		System.out.printf("|%16S %-16s|\n", mon_name, mon_kind1);
+		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
+		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
 		System.out.printf("%2S\n", user_name);
 		System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
