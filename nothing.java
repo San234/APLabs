@@ -675,7 +675,7 @@ public class nothing
 				System.out.println("You used Fireball!!");
 				mp -= 45;
 				
-				System.out.printf("\"%S\" used \'Fireball\'!\n\"Erdhas %S\" got burned by " + s_atk + "\n",user_name, mon_kind1);	
+				System.out.printf("\"%S\" used \'Fireball\'!\n\"Erdhas %S\" got burned by " + s_atk + "\n",name, mon_kind1);	
 				if(mon_hp > 0){
 				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);
 				hp = hp - mon_atk;
@@ -708,5 +708,6 @@ public class nothing
 			System.out.println("Wrong spell!");
 			you.useItem(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
+		System.out.println("!!!Thanks for the playing!!!");
 	}
 }
