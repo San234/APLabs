@@ -25,7 +25,7 @@ public class nothing
 		nothing you = new nothing();
 		Random rand = new Random();
 		
-		System.out.print("Title\n");
+		System.out.print("Lake of Oblivion\n");
 		System.out.print("[Play] [Direction]\n");
 		String menu = up.nextLine();
 		
