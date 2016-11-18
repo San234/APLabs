@@ -2,20 +2,28 @@ import java.util.Scanner;
 
 public class Cube
 {	
+	static float output;
+	static float side;
+	static float a;
 	public static void main(String[]args)
 	{
 		Scanner up = new Scanner(System.in);
 		
-		double side = 6;
+		side = 6;
 		
 		System.out.print("Enter the area of one side : ");
-		double a = up.nextDouble();
+		a = up.nextFloat();
 		up.nextLine();
 		
-		System.out.printf("The surface area of a cube with " + side + " sides is " + "%.5f", SACalc(side, a));
+		SACalc();
+		print();
 	}
-	public static double SACalc(double side, double a)
+	public static void SACalc()
 	{
-		return side * a;
+		output = side * a;
+	}
+	public static void print()
+	{
+		System.out.printf("The surface area of a cube with " + side + " sides is " + "%.5f", output);
 	}
 }

@@ -12,10 +12,16 @@ public class Circle
 		r = up.nextDouble();
 		up.nextLine();
 		
-		System.out.printf("The area of circle with a radius of " + r + " is " + "%.5f", CircCalc());
+		CircCalc();
+		print();
+		
 	}
-	public static double CircCalc()
+	public static void CircCalc()
 	{
-		return Math.pow(r, 2) * Math.PI; 
+		A = Math.pow(r, 2) * Math.PI; 
+	}
+	public static void print()
+	{
+		System.out.printf("The area of circle with a radius of " + r + " is " + "%.5f", A);
 	}
 }

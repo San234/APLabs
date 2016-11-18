@@ -9,7 +9,7 @@ public class ReplaceAt
 	{
 		Scanner up = new Scanner(System.in);
 		
-		count = 0;
+		count = -1;
 		System.out.print("Enter the sentence: ");
 		sent = up.nextLine();
 		

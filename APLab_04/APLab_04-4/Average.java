@@ -24,11 +24,15 @@ public class Average
 		num3 = up.nextDouble();
 		up.nextLine();
 		
-		System.out.printf("The average of %.5f %.5f and %.5f is %.5f", num1,num2,num3,average());
-		
+		average();
+		print();
 	}
-	public static double average()
+	public static void average()
 	{
-		return (num1 + num2 + num3)/3;
+		avg = (num1 + num2 + num3)/3;
+	}
+	public static void print()
+	{
+		System.out.printf("The average of %.5f %.5f and %.5f is %.5f", num1,num2,num3,avg);
 	}
 }

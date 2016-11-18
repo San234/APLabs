@@ -18,15 +18,17 @@ public class Rectangle
 		w = up.nextDouble();
 		up.nextLine();
 		
+		
+		PerimCalc();
 		print();
 	}
 	
-	public static double PerimCalc(Double l, Double w)
+	public static void PerimCalc()
 	{
-		return 2*l + 2*w;
+		perimeter = 2*l + 2*w;
 	}
 	public static void print()
 	{
-		System.out.printf("Your rectangle is " + "%.5f" + "sq ft around",  PerimCalc(l, w));
+		System.out.printf("Your rectangle is " + "%.5f" + "sq ft around",  perimeter);
 	}
 }
