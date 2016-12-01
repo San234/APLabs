@@ -16,17 +16,16 @@ public class Expression
 		ArrayList<String>equation = new ArrayList<>(Arrays.asList(expression.split(" ")));
 		
 		int i = 0;
-		while(i < equation.size())
-		{
-			if(i < equation.size() && equation.get(i).equals("*")||equation.get(i).equals("/"))
+		while(i < equation.size()){
+			if(i < equation.size() && equation.get(i).equals("*") || equation.get(i).equals("/"))
 			{
 				if(equation.get(i).equals("*")){
-					equation.set(i, "" + (Integer.parseInt(equation.get(i-1)) + Integer.parseInt(equation.get(i+1))));
+					equation.set(i, "" + (Integer.parseInt(equation.get(i-1)) * Integer.parseInt(equation.get(i+1))));
 					equation.remove(i-1);
 					equation.remove(i);
 				}
 				else{
-					equation.set(i, "" + (Integer.parseInt(equation.get(i-1)) + Integer.parseInt(equation.get(i+1))));
+					equation.set(i, "" + (Integer.parseInt(equation.get(i-1)) / Integer.parseInt(equation.get(i+1))));
 					equation.remove(i-1);
 					equation.remove(i);
 				}
@@ -34,16 +33,18 @@ public class Expression
 			else{
 				i++;
 			}
+			}
+		
 		while(i < equation.size()){
 			if(i < equation.size() && equation.get(i).equals("+") || equation.get(i).equals("-"))
 			{
 				if(equation.get(i).equals("+")){
-					equation.set(i, "" + (Integer.parseInt(equation.get(i-1)) + "+" + Integer.parseInt(equation.get(i+1))));
+					equation.set(i, "" + (Integer.parseInt(equation.get(i-1)) + Integer.parseInt(equation.get(i+1))));
 					equation.remove(i-1);
 					equation.remove(i);
 				}
 				else{
-					equation.set(i, "" + (Integer.parseInt(equation.get(i-1)) + Integer.parseInt(equation.get(i+1))));
+					equation.set(i, "" + (Integer.parseInt(equation.get(i-1)) - Integer.parseInt(equation.get(i+1))));
 					equation.remove(i-1);
 					equation.remove(i);
 				}
@@ -51,8 +52,8 @@ public class Expression
 			else{
 				i++;
 			}
-			}
 		}
-		System.out.println(equation);
+			System.out.println(equation);
 	}
+		
 }
