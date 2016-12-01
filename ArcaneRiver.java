@@ -18,11 +18,12 @@ public class ArcaneRiver
 	static int max_exp;
 	static int gold;
 	static int skill;
+	static int ErhdasEnc;
 	static String name;
 	public static void main(String[]args)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		System.out.print("Arcane River\n");
@@ -82,14 +83,13 @@ public class ArcaneRiver
 	public static void start()
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		System.out.print("Enter your nickname :\n");
 		String user_name = up.nextLine();
 		
 		name = user_name;
-		
 		hp =  rand.nextInt(180) + 110;
 		max_hp = hp;
 		mp = rand.nextInt(110) + 100;
@@ -116,12 +116,12 @@ public class ArcaneRiver
 			start();
 		}
 		System.out.println("!!!Welcome to \"The Arcane River\"!!!");
-		you.stat(user_name);
+		go.stat(user_name);
 	}
 	public static void stat(String user_name)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		String placeName = "";
@@ -134,7 +134,7 @@ public class ArcaneRiver
 			hp =max_hp;
 			max_mp += 30;
 			mp = max_mp;
-			level += 1;
+			level += 6;
 			exp -= max_exp;
 			max_exp = max_exp +90;
 		}
@@ -164,37 +164,44 @@ public class ArcaneRiver
 		System.out.printf("|%8S : %5s%8S : %9s|\n","Level" , level, "Gold" , gold);			
 		System.out.print("What would you do? [Hunt Shop]\n");
 		String act_ask = up.nextLine();
+		
 		if(act_ask.equals("hunt") || act_ask.equals("Hunt"))
 		{
 			if(level % 10 == 0){
 				ErhdasEnc = 4;
 				System.out.println("!!!WARNING!!!");
-				you.bosshunt(user_name, ErhdasEnc);
+				go.bosshunt(user_name, ErhdasEnc);
 			}
 			if (ErhdasEnc == 1){
-				you.hunt1(user_name, ErhdasEnc);
+				go.hunt1(user_name, ErhdasEnc);
 			}
 			else if(ErhdasEnc == 2){
-				you.hunt2(user_name, ErhdasEnc);
+				go.hunt2(user_name, ErhdasEnc);
 			}
 			else if(ErhdasEnc == 3){
-				you.hunt3(user_name, ErhdasEnc);
+				go.hunt3(user_name, ErhdasEnc);
+			}
+			else if(ErhdasEnc == 5){
+				go.hunt5(user_name, ErhdasEnc);
+			}
+			else if(ErhdasEnc == 6){
+				go.hunt6(user_name, ErhdasEnc);
 			}
 		}
 		if(act_ask.equals("Shop")||act_ask.equals("shop")){
-			you.shop(user_name, ErhdasEnc);
+			go.shop(user_name, ErhdasEnc);
 		}
 		else
 		{
 			System.out.println("Wrong!");
-			you.stat(user_name);
+			go.stat(user_name);
 		}
 
 	}
 	public static void shop(String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		System.out.println("You have " + gold + "G and ");
@@ -217,37 +224,37 @@ public class ArcaneRiver
 			if(choose_item.equals("hp")||choose_item.equals("HP")){
 				if(gold <= 100){
 					System.out.println("You don't have enough money!!!");
-					you.stat(user_name);
+					go.stat(user_name);
 				}
 				System.out.println("Thank you!");
 				h_item += 1;
 				item += 1;
 				gold -= 100;
-				you.shop(user_name, ErhdasEnc);
+				go.shop(user_name, ErhdasEnc);
 			}
 			else if(choose_item.equals("mp")||choose_item.equals("MP")){
 				if(gold <= 100){
 					System.out.println("You don't have enough money!!!");
-					you.stat(user_name);
+					go.stat(user_name);
 				}
 				System.out.println("Thank you!");
 				m_item += 1;
 				item += 1;
 				gold -= 100;
-				you.shop(user_name, ErhdasEnc);
+				go.shop(user_name, ErhdasEnc);
 			}
 			else{
-				you.shop(user_name, ErhdasEnc);
+				go.shop(user_name, ErhdasEnc);
 			}
 		}
 		else{
-			you.stat(user_name);
+			go.stat(user_name);
 		}
 	}
 	public static void hunt1(String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		String mon_name = "Erhdas";
@@ -290,12 +297,12 @@ public class ArcaneRiver
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
-		you.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
+		go.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
 	}
 	public static void hunt2(String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		String mon_name = "Erhdas";
@@ -342,12 +349,12 @@ public class ArcaneRiver
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
-		you.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);	
+		go.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);	
 	}
 	public static void hunt3(String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		String mon_name = "Erhdas";
@@ -400,12 +407,12 @@ public class ArcaneRiver
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
-		you.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
+		go.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
 	}
 	public static void bosshunt(String user_name,int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		String mon_name = "Erhdas";
@@ -457,12 +464,110 @@ public class ArcaneRiver
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
-		you.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
+		go.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
+	}
+	public static void hunt5(String user_name, int ErhdasEnc)
+	{
+		Scanner up = new Scanner(System.in);
+		ArcaneRiver go = new ArcaneRiver();
+		Random rand = new Random();
+		
+		String mon_name = "Erhdas";
+		String a = "atk";
+		String b = "hp";
+		String c = "def";
+		String d = "exp";
+		
+		String mon_kind1 = "of Rock";
+		String mon_kind2 = "of Tenacious";
+		String mon_kind3 = "of Flame";
+		String mon_kind4 = "of Rest";
+		
+		int mon_hp =  rand.nextInt(112) + 75;
+		int mon_atk = rand.nextInt(63) + 42;
+		int mon_def = rand.nextInt(45) + 35;
+		
+		System.out.println("!!Monster Appeared!!");
+		System.out.println("					@@@@@@@@@@@@@@@@|#|@@@");
+		System.out.println("			  |    @@@@@@@@@@@@@@@@|##|@@@@");
+		System.out.println("			 |#|   @@@@@@@@@@@@@@@|###|@@@@");
+		System.out.println("			 |##| @@@@@@@@@@@@@@@|####|@@@@@");
+		System.out.println("			 |###|@@@@@@@@@@@@@@|######|@@@@");
+		System.out.println("			 |###|@@@@@@@@@@@@@@@----|*|@@@@");
+		System.out.println("			  |--@@@@@@@@@@@@@@@@@@@@@|*|@@@@");
+		System.out.println("			   @@@@@@@@@@@@@@@@@@@@@@@|*|@@@@@");
+		System.out.println("			   @@@@@@@@@@@@@@@@@@@@@@@@|*|@@@@");
+		System.out.println("		    @|@@@@@@@@@@@@@@@@@@@@@@@@@@|*|@@@@");
+		System.out.println("		  @@|@@@@@@@000000000@@@@@@@@@@@|*|@@@@");
+		System.out.println("		 @@@|@@@@@@00       000@@@@@@@@@|*|@@@");
+		System.out.println("		 @@@|@@@@@@0         00@@@@@@@@@@|*|@@@@");
+		System.out.println("		 @@@|@@@@@@0         00@@@@@@@@@@@|*|@@@");
+		System.out.println("		 @@|@@@@@@@0         00@@@@@@@@@@@@@@@@@");
+		System.out.println("		 @@|@@@@@@@0         00@@@@@@@@@@@@@@@@@");
+		System.out.println("		 @@@@@@@@@@00       000@@@@@@@@@@@@@|&&|@");
+		System.out.println("	 ^%%|@@@@@@@#@@@0000000000@@@@@@##@|^%%%%%%|@");
+		System.out.println("   %%%%%%%|@@@@##___________________#|%%%%%%%%%%%|@");
+		System.out.println("%%^%%%%%%%%|@@##################|%%%%^%%%%%%%%%%%%|@");
+		System.out.println("%%%%%%%%$%$|@@@################|%%%%%%%%%%%%%%%%%%|@");
+		
+		System.out.printf("|%16S %-16s|\n", mon_name, mon_kind1);
+		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
+		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
+		
+		go.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
+	}
+	public static void hunt6(String user_name, int ErhdasEnc)
+	{
+		Scanner up = new Scanner(System.in);
+		ArcaneRiver go = new ArcaneRiver();
+		Random rand = new Random();
+		
+		String mon_name = "Erhdas";
+		String a = "atk";
+		String b = "hp";
+		String c = "def";
+		String d = "exp";
+		
+		String mon_kind1 = "of Rock";
+		String mon_kind2 = "of Tenacious";
+		String mon_kind3 = "of Flame";
+		String mon_kind4 = "of Rest";
+		
+		int mon_hp =  rand.nextInt(112) + 75;
+		int mon_atk = rand.nextInt(63) + 42;
+		int mon_def = rand.nextInt(45) + 35;
+		
+		System.out.println("!!Monster Appeared!!");
+		System.out.println("						      |##|");
+		System.out.println("						     |####|");
+		System.out.println("						000000----00000000000");
+		System.out.println("				    @@@@@@@@@@@@@@@@@@@@00000000");
+		System.out.println("				@@@@@@@@@@@@@@@@@@@@@@@@@@@0000000");
+		System.out.println("			  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@0000000");
+		System.out.println("			 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00000");
+		System.out.println("			@@@\----@@@@@@@@@-----/@@@@@@@@@@@000000");
+		System.out.println("			@@@@@00 \--@@@--/ 000@@@@@@@@@@@@@@000000");
+		System.out.println("			@@@@00     \-/     000@@@@@@@@@@@@@000000");
+		System.out.println("			@@@000              000@@@@@@@@@@@@000000");
+		System.out.println("		    @@@000              000@@@@@@@@@@@@000000");
+		System.out.println("		    @@@000              000@@@@@@@@@@@@000000");
+		System.out.println("		     @@000              000@@@@@@@@@@@@@00000");
+		System.out.println("		     @@@000            000@@@@@@@@@@@@@@00000");
+		System.out.println("		 __@@@@@0000000000000000@@@@@@@-----@@@@00000");
+		System.out.println("	    |##|@@@@@@@000000000000@@@@@---@@@@@@@@00000");
+		System.out.println("		 |##|");
+		System.out.println("		  |#|");
+		
+		System.out.printf("|%14S %-18s|\n", mon_name, mon_kind2);
+		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
+		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
+		
+		go.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
 	}
 	public static void askHunt(String a, String b, String c, String d, int mon_atk,String user_name,  int mon_def, int mon_hp, String mon_name,int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 
 		System.out.print("What would you do? [Attack Flee Defend Item Spell]\n");
@@ -470,41 +575,39 @@ public class ArcaneRiver
 		
 		if(user_command.equals("attack")||user_command.equals("Attack"))
 		{
-			you.fight1(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			go.fight1(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 		}
 		else if(user_command.equals("Flee")||user_command.equals("flee"))
 		{
-			you.stat(user_name);
+			go.stat(user_name);
 		}
 		else if(user_command.equals("defend")||user_command.equals("Defend"))
 		{
-			you.defense(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
+			go.defense(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		else if(user_command.equals("Item")||user_command.equals("item")){
 			if(item <= 0){
 				System.out.println("You don't have any!!");
-				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+				go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
-			you.useItem(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
+			go.useItem(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		else if(user_command.equals("Spell")||user_command.equals("spell")){
 			if(mp <= 0){
 				System.out.println("You don't have enough MP!!");
-				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+				go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
-			you.useSkill(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
+			go.useSkill(a,b,c,d, mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		else
 		{
-			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 		}
 	}
 	public static void fight1(String a, String b, String c, String d,int mon_atk,String user_name,int mon_def, int mon_hp, String mon_name, int ErhdasEnc)
 	{
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
-		
-	
 		
 		String mon_kind1 = "of Happy";
 		int actual_a = atk - mon_def;
@@ -524,6 +627,18 @@ public class ArcaneRiver
 		else if(ErhdasEnc == 4){
 			mon_kind1 = "of Sad";
 		}
+		else if(ErhdasEnc == 5){
+			mon_kind1 = "of rock";
+		}
+		else if(ErhdasEnc == 6){
+			mon_kind1 = "of tenacious";
+		}
+		else if(ErhdasEnc == 7){
+			mon_kind1 = "of flame";
+		}
+		else if(ErhdasEnc == 8){
+			mon_kind1 = "of rest";
+		}
 		
 		System.out.printf("|%16S %-16s|\n", mon_name, mon_kind1);
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
@@ -538,7 +653,7 @@ public class ArcaneRiver
 				System.out.println("!!!GAME OVER!!!");
 				System.exit(0);
 			}
-			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			
 		}
 		else if(mon_hp <= 0){
@@ -553,14 +668,14 @@ public class ArcaneRiver
 			System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n", mon_kind1);
 			exp = exp + added_exp;			
 			gold = gold + added_gold;
-			you.stat(user_name);
+			go.stat(user_name);
 		}
 		
 	
 	}
 	public static void defense(String a, String b, String c, String d, int mon_def, int mon_hp, int mon_atk, String mon_name,  String user_name,int ErhdasEnc)
 	{
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		
 		String mon_kind1 = "of Happy";
 		if(mon_hp <= 0){
@@ -605,12 +720,12 @@ public class ArcaneRiver
 		System.out.printf("%S got damaged by " + actual_d + "\n", name);
 		System.out.printf("You countered \"Erdhas %S\" by " + actual_a + "\n", mon_kind1);
 		
-		you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+		go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 	}
 	public static void useItem(String a, String b, String c, String d,int mon_def, int mon_hp ,int mon_atk, String mon_name, String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		if(mon_hp <= 0){
@@ -629,7 +744,7 @@ public class ArcaneRiver
 		if(useHp.equals("HP")||useHp.equals("hp")){
 			if(h_item == 0){
 				System.out.println("You don't have any!!");
-				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+				go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 			else if(h_item >= 1){
 				hp = hp - mon_atk;
@@ -640,13 +755,13 @@ public class ArcaneRiver
 				}
 				item -= 1;
 				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
-				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+				go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 		}
 		else if(useHp.equals("MP")||useHp.equals("mp")){
 			if(m_item == 0){
 				System.out.println("You don't have any!!");
-				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+				go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 			else if(h_item >= 1){
 				hp = hp - mon_atk;
@@ -657,18 +772,18 @@ public class ArcaneRiver
 				}
 				m_item -= 1;
 				System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);	
-				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+				go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 		}
 		else{
 			System.out.println("Wrong!");
-			you.useItem(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
+			go.useItem(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 	}
 	public static void useSkill(String a, String b, String c, String d,int mon_def, int mon_hp ,int mon_atk, String mon_name, String user_name, int ErhdasEnc)
 	{
 		Scanner up = new Scanner(System.in);
-		ArcaneRiver you = new ArcaneRiver();
+		ArcaneRiver go = new ArcaneRiver();
 		Random rand = new Random();
 		
 		if(mon_hp <= 0){
@@ -687,7 +802,7 @@ public class ArcaneRiver
 		if(useFire.equals("Fireball")||useFire.equals("fireball")){
 			if(skill == 0){
 				System.out.println("You don't learn any!!");
-				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+				go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 			else if(skill >= 1){
 				mon_hp -= s_atk;
@@ -704,7 +819,7 @@ public class ArcaneRiver
 				System.out.println("!!!GAME OVER!!!");
 				System.exit(0);
 			}
-			you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);	
+			go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);	
 		}
 		else if(mon_hp <= 0){
 				int added_exp = rand.nextInt(100) + 75;
@@ -718,14 +833,14 @@ public class ArcaneRiver
 				System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n", mon_kind1);
 				exp = exp + added_exp;			
 				gold = gold + added_gold;
-				you.stat(user_name);
+				go.stat(user_name);
 		}
-				you.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+				go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 		}
 		else{
 			System.out.println("Wrong spell!");
-			you.useItem(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
+			go.useItem(a,b,c,d,mon_def,mon_hp,mon_atk, mon_name, user_name,ErhdasEnc);
 		}
 		System.out.println("!!!Thanks for the playing!!!");
 	}
