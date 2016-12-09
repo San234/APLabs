@@ -2,22 +2,34 @@ import java.util.ArrayList;
 
 public class SG4_1
 {
-	static int i;
 	public static void main(String[]args)
 	{
 		int[][]nums = new int[2][2];
-		ArrayList<Integer> arr = new ArrayList<Integer>();
+		SG4_1 var = new SG4_1();
+		ArrayList<Integer> arr1 = new ArrayList<Integer>();
+		int[] arr = new int[100];
 		
-		System.out.println("\n\n\tC C 5 A D\"2 4\" A A B C B D\t\n");
+		System.out.println("\n\n\tE C E A C C A A B B E B C\t\n");
 
-		int j =doSomething();
-		
-		System.out.print(j);
-	}
-	public static int doSomething(){
-		for(i = 0; i <5;i++){
-			i = i;
+		int k = 9;
+		 
+		for(int i = 2; i <= k; i++){
+			if(arr[i] < 100){
+				System.out.println("SMALL");}
 		}
-		return i;
+		
+		
+		
+		int num = var.result(5);
+		
+		System.out.println(num);
+	}
+	public int result(int n)
+	{
+		if(n == 1){
+			return 2;}
+		else{
+			System.out.println("1");
+			return 2 * result(n - 1);}
 	}
 }
