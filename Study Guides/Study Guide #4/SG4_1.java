@@ -9,7 +9,7 @@ public class SG4_1
 		ArrayList<Integer> arr1 = new ArrayList<Integer>();
 		int[] arr = new int[100];
 		
-		System.out.println("\n\n\tE C E A C C A A B B E B C\t\n");
+		System.out.println("\n\n\tE C E A C C A A B B E B C B D A E C\t\n");
 
 		int k = 9;
 		 

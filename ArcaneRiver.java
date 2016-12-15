@@ -90,13 +90,13 @@ public class ArcaneRiver
 		String user_name = up.nextLine();
 		
 		name = user_name;
-		hp =  rand.nextInt(180) + 110;
+		hp = rand.nextInt(75) + 180;
 		max_hp = hp;
 		mp = rand.nextInt(110) + 100;
 		max_mp = mp;
-		atk = rand.nextInt(64) + 36;
-		s_atk = rand.nextInt(70) + 40;
-		def = rand.nextInt(48) + 32;
+		atk = rand.nextInt(36) + 64;
+		s_atk = rand.nextInt(40) + 70;
+		def = rand.nextInt(32) + 48;
 		exp = exp;
 		max_exp = 200;
 		gold = 0;
@@ -148,11 +148,11 @@ public class ArcaneRiver
 			placeName = "lake of oblivion";
 		}
 		else if(level > 10||level < 18){
-			ErhdasEnc = rand.nextInt(6)+5;
+			ErhdasEnc = rand.nextInt(2)+5;
 			placeName = "the cave of peace";
 		}
 		else if(level >= 18||level <=20){
-			ErhdasEnc = rand.nextInt(7)+6;
+			ErhdasEnc = rand.nextInt(2)+6;
 			placeName = "volcanic mountain";
 		}
 		
@@ -186,8 +186,6 @@ public class ArcaneRiver
 			}
 			else if(ErhdasEnc == 6){
 				go.hunt6(user_name, ErhdasEnc);
-			else if(ErhdasEnc == 7){
-				go.hunt
 			}
 		}
 		if(act_ask.equals("Shop")||act_ask.equals("shop")){
@@ -580,7 +578,7 @@ public class ArcaneRiver
 			if(level < 11){
 				go.fight1(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
-			else if(ErhdasEnc == 5){
+			else if(ErhdasEnc >= 5){
 				go.fight2(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
 			
