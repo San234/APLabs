@@ -34,14 +34,14 @@ public class GameGun
 	public static String resetClip()
 	{
 		for(int i = 0; i < clip.length; i++){
-			clip[i] += new String[]{"[]"};
+			clip[i] += new String[]{" [] "};
 		}
 		return "";
 	}
 	public static String shoot()
 	{
 		if(shotCount > 0){
-			clip[shotCount-1] = "[]";
+			clip[shotCount-1] = " []";
 			shotCount -= 1;
 			return "Boom!!!\n";
 		}
