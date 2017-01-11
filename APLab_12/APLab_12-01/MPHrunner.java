@@ -19,5 +19,9 @@ public class MPHrunner
 		
 		MPH mph = new MPH(dist, hrs, mins);
 		System.out.println(dist + " miles in " + hrs + " hours = " + mph.calcMPH() + " mph");
+		
+		MPH mph1 = new MPH();
+		mph1.setMPH(10, 2, 0);
+		System.out.println(10 + " miles in " + 2 + " hours = " + mph1.calcMPH() + " mph");
 	}
 }
