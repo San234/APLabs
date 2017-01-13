@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class SG4_1
 {
@@ -8,6 +9,7 @@ public class SG4_1
 		SG4_1 var = new SG4_1();
 		ArrayList<Integer> arr1 = new ArrayList<Integer>();
 		int[] arr = new int[100];
+		Scanner up = new Scanner(System.in);
 		
 		System.out.println("\n\n\tE C E A C C A A B B E B C B D A E C\t\n");
 
@@ -18,7 +20,9 @@ public class SG4_1
 				System.out.println("SMALL");}
 		}
 		
-		
+		System.out.print("Enter: ");
+		String var1 = up.nextLine();
+		var.stringRecur(var1);
 		
 		int num = var.result(5);
 		
@@ -32,4 +36,11 @@ public class SG4_1
 			System.out.println("1");
 			return 2 * result(n - 1);}
 	}
+	public void stringRecur(String s)
+{
+   if(s.length() < 15)
+       System.out.println(s);
+   else
+       stringRecur(s + "*");
+}
 }
