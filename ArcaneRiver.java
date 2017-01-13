@@ -90,11 +90,14 @@ public class ArcaneRiver
 		String user_name = up.nextLine();
 		
 		name = user_name;
+		hp =  rand.nextInt(80) + 140;
 		hp = rand.nextInt(75) + 180;
 		max_hp = hp;
-		mp = rand.nextInt(110) + 100;
+		mp = rand.nextInt(50) + 100;
 		max_mp = mp;
 		atk = rand.nextInt(36) + 64;
+		s_atk = rand.nextInt(47) + 53;
+		def = rand.nextInt(34) + 41;
 		s_atk = rand.nextInt(40) + 70;
 		def = rand.nextInt(32) + 48;
 		exp = exp;
@@ -127,8 +130,8 @@ public class ArcaneRiver
 		String placeName = "";
 		
 		while(exp >= max_exp){
-			atk += 5;
-			def += 5;
+			atk += 25;
+			def += 25;
 			s_atk += 8;
 			max_hp += 50;
 			hp =max_hp;
@@ -147,14 +150,15 @@ public class ArcaneRiver
 			ErhdasEnc = rand.nextInt(3)+1;
 			placeName = "lake of oblivion";
 		}
-		else if(level > 10||level < 18){
+		else if(level > 10&&level < 18){
 			ErhdasEnc = rand.nextInt(2)+5;
 			placeName = "the cave of peace";
 		}
-		else if(level >= 18||level <=20){
-			ErhdasEnc = rand.nextInt(2)+6;
+		else if(level >= 18&&level < 20){
+			ErhdasEnc = rand.nextInt(2) + 6;
 			placeName = "volcanic mountain";
 		}
+		
 		
 		System.out.printf("You are in \"%S\"\n",placeName);
 		System.out.printf("%2S\n", user_name);
@@ -172,6 +176,7 @@ public class ArcaneRiver
 				System.out.println("!!!WARNING!!!");
 				go.bosshunt(user_name, ErhdasEnc);
 			}
+			
 			if (ErhdasEnc == 1){
 				go.hunt1(user_name, ErhdasEnc);
 			}
@@ -186,6 +191,9 @@ public class ArcaneRiver
 			}
 			else if(ErhdasEnc == 6){
 				go.hunt6(user_name, ErhdasEnc);
+			}
+			else if(ErhdasEnc == 7){
+				go.hunt7(user_name, ErhdasEnc);
 			}
 		}
 		if(act_ask.equals("Shop")||act_ask.equals("shop")){
@@ -268,9 +276,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  rand.nextInt(60) + 40;
-		int mon_atk = rand.nextInt(24) + 12;
-		int mon_def = rand.nextInt(30) + 15;
+		int mon_hp =  rand.nextInt(40) + 60;
+		int mon_atk = rand.nextInt(25) + 30;
+		int mon_def = rand.nextInt(45) + 15;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("						|#|");
@@ -316,9 +324,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  rand.nextInt(60) + 40;
-		int mon_atk = rand.nextInt(48) + 28;
-		int mon_def = rand.nextInt(12) + 6;
+		int mon_hp =  rand.nextInt(10) + 64;
+		int mon_atk = rand.nextInt(60) + 80;
+		int mon_def = rand.nextInt(6) + 30;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("				|#|                               |#|   |#|");
@@ -368,9 +376,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  rand.nextInt(80) + 40;
-		int mon_atk = rand.nextInt(21) + 4;
-		int mon_def = rand.nextInt(50) + 32;
+		int mon_hp =  rand.nextInt(80) + 80;
+		int mon_atk = rand.nextInt(15) + 5;
+		int mon_def = rand.nextInt(32) + 50;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("					                               	  	     |#|");	
@@ -426,9 +434,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  3 * (rand.nextInt(80) + 40);
-		int mon_atk = 3 * (rand.nextInt(52) + 4);
-		int mon_def = 2 * (rand.nextInt(50) + 32);
+		int mon_hp =  3 * (rand.nextInt(40) + 80);
+		int mon_atk = 2 * (rand.nextInt(52) + 78);
+		int mon_def = 2 * (rand.nextInt(30) + 40);
 		
 		System.out.println("!!BOSS Appeared!!");
 		System.out.println("				                                 |##| ");
@@ -483,9 +491,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Flame";
 		String mon_kind4 = "of Rest";
 		
-		int mon_hp =  rand.nextInt(112) + 75;
-		int mon_atk = rand.nextInt(63) + 42;
-		int mon_def = rand.nextInt(45) + 35;
+		int mon_hp =  rand.nextInt(57) + 75;
+		int mon_atk = rand.nextInt(21) + 42;
+		int mon_def = rand.nextInt(10) + 35;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("					@@@@@@@@@@@@@@@@|#|@@@");
@@ -533,9 +541,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Flame";
 		String mon_kind4 = "of Rest";
 		
-		int mon_hp =  rand.nextInt(112) + 75;
-		int mon_atk = rand.nextInt(63) + 42;
-		int mon_def = rand.nextInt(45) + 35;
+		int mon_hp =  rand.nextInt(65) + 115;
+		int mon_atk = rand.nextInt(16) + 29;
+		int mon_def = rand.nextInt(25) + 69;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("						      |##|");
@@ -546,19 +554,71 @@ public class ArcaneRiver
 		System.out.println("			  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@0000000");
 		System.out.println("			 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00000");
 		System.out.println("			@@@\\----@@@@@@@@@-----/@@@@@@@@@@@000000");
-		System.out.println("			@@@@@00\\--@@@--/ 000@@@@@@@@@@@@@@000000");
-		System.out.println("			@@@@00     \\-/     000@@@@@@@@@@@@@000000");
-		System.out.println("			@@@000              000@@@@@@@@@@@@000000");
+		System.out.println("			@@@@@00 \\--@@@--/ 000@@@@@@@@@@@@@@000--0");
+		System.out.println("			@@@@00     \\-/     000@@@@@@@@@@@@@000##--");
+		System.out.println("			@@@000              000@@@@@@@@@@@@00#####-");
+		System.out.println("		    @@@000              000@@@@@@@@@@@@000##--");
 		System.out.println("		    @@@000              000@@@@@@@@@@@@000000");
 		System.out.println("		    @@@000              000@@@@@@@@@@@@000000");
 		System.out.println("		     @@000              000@@@@@@@@@@@@@00000");
 		System.out.println("		     @@@000            000@@@@@@@@@@@@@@00000");
-		System.out.println("		 __@@@@@0000000000000000@@@@@@@-----@@@@00000");
-		System.out.println("	    |##|@@@@@@@000000000000@@@@@---@@@@@@@@00000");
-		System.out.println("		 |##|");
-		System.out.println("		  |#|");
+		System.out.println("		 __@@@@@0000000000000000@@@@@@@-----@@_____00");
+		System.out.println("	    |##|@@@@@@@000000000000@@@@@---@@@@@@|#####|0");
+		System.out.println("		 |##|    |##|    |#|                   |##|  ");
+		System.out.println("		  |#|     |#|    |#|                    |#|  ");
 		
 		System.out.printf("|%14S %-18s|\n", mon_name, mon_kind2);
+		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
+		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
+		
+		go.askHunt(a,b,c,d, mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
+	}
+	public static void hunt7(String user_name, int ErhdasEnc)
+	{
+		Scanner up = new Scanner(System.in);
+		ArcaneRiver go = new ArcaneRiver();
+		Random rand = new Random();
+		
+		String mon_name = "Erhdas";
+		String a = "atk";
+		String b = "hp";
+		String c = "def";
+		String d = "exp";
+		
+		String mon_kind1 = "of Rock";
+		String mon_kind2 = "of Tenacious";
+		String mon_kind3 = "of Flame";
+		String mon_kind4 = "of Rest";
+		
+		int mon_hp =  rand.nextInt(27) + 83;
+		int mon_atk = rand.nextInt(77) + 93;
+		int mon_def = rand.nextInt(24) + 42;
+		
+		System.out.println("!!Monster Appeared!!");
+		System.out.println("   $$    		   $         $         $$");
+		System.out.println("	     $		   $$$      $$$         $$$");
+		System.out.println("	     $$		    $    $$$$$$$$$     $$$$$$");
+		System.out.println("	   $$$$$$$$$	       $$$$$$$$     $$$$$$");
+		System.out.println("	$    $$$$$$$$$$    $$$$$$$$$$     $$$$$$$");
+		System.out.println("	$$     $$$$$$$$$$ $$$$$$$$$$$$$ $$$$$$$");
+		System.out.println("	 $      $$$$$$@@@@@@@$$$$$$$$$$$$@@@$$$$$");
+		System.out.println("		  $$$$$$@@@@@@@@@@@@@@$$$$$$$$$$$$$$");
+		System.out.println("		$$$$@@@@@@@@@@@@@@@@@@@@@$$$$$$$$$");
+		System.out.println("	   $$$@@@@@@@@@@@@@@@@@@@@@@@@@$$$$$$$$$$");
+		System.out.println("	   $@@@@@@@000000000000000@@@@@@@@$$$$$$$$");
+		System.out.println("		@@@@@@00            000@@@@@@$$$$$$$$$");
+		System.out.println("		@@@@@00              000@@@@@$$$$$$$$");
+		System.out.println("	   $@@@@000              000@@@@$$$$$$$$$");
+		System.out.println("		$@@@000              000@@@@$$$$$$$");
+		System.out.println("		 $@@000              000@@@@@$$$$$$$$");
+		System.out.println("	   $@@@@000              000@@@@@@$$$$$$$$");
+		System.out.println("		$@@@@000            000@@@@@@@@@@$$");
+		System.out.println("		 $@@@0000000000000000@@@@@@@@@@@@@$$  ");
+		System.out.println("	     $@@@@@@000000000000@@@@@@@@@@@@@@@@@$");
+		System.out.println("	   $@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$ ");
+		System.out.println("	$$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$$$");
+		
+		System.out.printf("|%14S %-18s|\n", mon_name, mon_kind3);
 		System.out.printf("|%8S = %5s%8S = %6s|\n", b, mon_hp, a, mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", c, mon_def);
 		
@@ -578,10 +638,12 @@ public class ArcaneRiver
 			if(level < 11){
 				go.fight1(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
+			else if(level > 10 || level < 21){
+				go.fight2(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
+			}
 			else if(ErhdasEnc >= 5){
 				go.fight2(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
-			
 		}
 		else if(user_command.equals("Flee")||user_command.equals("flee"))
 		{
@@ -715,16 +777,22 @@ public class ArcaneRiver
 			go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 		}
 		else if(mon_hp <= 0){
-			int added_exp = rand.nextInt(50) + 140;
-			int added_gold = rand.nextInt(60) + 90;
-			if(ErhdasEnc == 6){
-				added_exp = 3 * (rand.nextInt(80) + 150);
-				added_gold = 3 * (rand.nextInt(30) + 120);
-			}
+			int added_exp = rand.nextInt(100) + 75;
+			int added_gold = rand.nextInt(75) + 43;
+			if(ErhdasEnc == 4){
+				added_exp = 3 * (rand.nextInt(150) + 115);
+				added_gold = 3 * (rand.nextInt(125) + 75);
+				added_exp = rand.nextInt(50) + 140;
+				added_gold = rand.nextInt(60) + 90;
+				if(ErhdasEnc == 6){
+					added_exp = 3 * (rand.nextInt(80) + 150);
+					added_gold = 3 * (rand.nextInt(30) + 120);
+				}
 			System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n", mon_kind1);
 			exp = exp + added_exp;			
 			gold = gold + added_gold;
 			go.stat(user_name);
+			}
 		}
 	}
 	public static void defense(String a, String b, String c, String d, int mon_def, int mon_hp, int mon_atk, String mon_name,  String user_name,int ErhdasEnc)
