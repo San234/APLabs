@@ -90,22 +90,16 @@ public class ArcaneRiver
 		String user_name = up.nextLine();
 		
 		name = user_name;
-<<<<<<< HEAD
 		hp =  rand.nextInt(80) + 140;
-=======
 		hp = rand.nextInt(75) + 180;
->>>>>>> origin/master
 		max_hp = hp;
 		mp = rand.nextInt(50) + 100;
 		max_mp = mp;
 		atk = rand.nextInt(36) + 64;
-<<<<<<< HEAD
 		s_atk = rand.nextInt(47) + 53;
 		def = rand.nextInt(34) + 41;
-=======
 		s_atk = rand.nextInt(40) + 70;
 		def = rand.nextInt(32) + 48;
->>>>>>> origin/master
 		exp = exp;
 		max_exp = 200;
 		gold = 0;
@@ -156,21 +150,18 @@ public class ArcaneRiver
 			ErhdasEnc = rand.nextInt(3)+1;
 			placeName = "lake of oblivion";
 		}
-<<<<<<< HEAD
 		else if(level > 10&&level < 18){
 			ErhdasEnc = rand.nextInt(2)+5;
 			placeName = "the cave of peace";
 		}
 		else if(level >= 18&&level < 20){
 			ErhdasEnc = rand.nextInt(2) + 6;
-=======
 		else if(level > 10||level < 18){
 			ErhdasEnc = rand.nextInt(2)+5;
 			placeName = "the cave of peace";
 		}
 		else if(level >= 18||level <=20){
 			ErhdasEnc = rand.nextInt(2)+6;
->>>>>>> origin/master
 			placeName = "volcanic mountain";
 		}
 		
@@ -568,19 +559,12 @@ public class ArcaneRiver
 		System.out.println("			  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@0000000");
 		System.out.println("			 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00000");
 		System.out.println("			@@@\\----@@@@@@@@@-----/@@@@@@@@@@@000000");
-<<<<<<< HEAD
 		System.out.println("			@@@@@00 \\--@@@--/ 000@@@@@@@@@@@@@@000--0");
 		System.out.println("			@@@@00     \\-/     000@@@@@@@@@@@@@000##--");
 		System.out.println("			@@@000              000@@@@@@@@@@@@00#####-");
 		System.out.println("		    @@@000              000@@@@@@@@@@@@000##--");
-		System.out.println("		    @@@000              000@@@@@@@@@@@@0000--");
-=======
-		System.out.println("			@@@@@00\\--@@@--/ 000@@@@@@@@@@@@@@000000");
-		System.out.println("			@@@@00     \\-/     000@@@@@@@@@@@@@000000");
-		System.out.println("			@@@000              000@@@@@@@@@@@@000000");
 		System.out.println("		    @@@000              000@@@@@@@@@@@@000000");
 		System.out.println("		    @@@000              000@@@@@@@@@@@@000000");
->>>>>>> origin/master
 		System.out.println("		     @@000              000@@@@@@@@@@@@@00000");
 		System.out.println("		     @@@000            000@@@@@@@@@@@@@@00000");
 		System.out.println("		 __@@@@@0000000000000000@@@@@@@-----@@_____00");
@@ -659,16 +643,12 @@ public class ArcaneRiver
 			if(level < 11){
 				go.fight1(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
-<<<<<<< HEAD
 			else if(level > 10 || level < 21){
 				go.fight2(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
-=======
 			else if(ErhdasEnc >= 5){
 				go.fight2(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			}
-			
->>>>>>> origin/master
 		}
 		else if(user_command.equals("Flee")||user_command.equals("flee"))
 		{
@@ -802,26 +782,22 @@ public class ArcaneRiver
 			go.askHunt(a,b,c,d,mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 		}
 		else if(mon_hp <= 0){
-<<<<<<< HEAD
 			int added_exp = rand.nextInt(100) + 75;
 			int added_gold = rand.nextInt(75) + 43;
 			if(ErhdasEnc == 4){
 				added_exp = 3 * (rand.nextInt(150) + 115);
 				added_gold = 3 * (rand.nextInt(125) + 75);
-=======
 			int added_exp = rand.nextInt(50) + 140;
 			int added_gold = rand.nextInt(60) + 90;
 			if(ErhdasEnc == 6){
 				added_exp = 3 * (rand.nextInt(80) + 150);
 				added_gold = 3 * (rand.nextInt(30) + 120);
->>>>>>> origin/master
 			}
 			System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n", mon_kind1);
 			exp = exp + added_exp;			
 			gold = gold + added_gold;
 			go.stat(user_name);
 		}
-<<<<<<< HEAD
 	}
 	public static void fight2(String a, String b, String c, String d,int mon_atk,String user_name,int mon_def, int mon_hp, String mon_name, int ErhdasEnc)
 	{
@@ -886,8 +862,6 @@ public class ArcaneRiver
 			gold = gold + added_gold;
 			go.stat(user_name);
 		}
-=======
->>>>>>> origin/master
 	}
 	public static void defense(String a, String b, String c, String d, int mon_def, int mon_hp, int mon_atk, String mon_name,  String user_name,int ErhdasEnc)
 	{
