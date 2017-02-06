@@ -3,27 +3,25 @@ import java.util.Scanner;
 
 public class ToyStore
 {
-	private ArrayList<Toy> inventory = new ArrayList<Toy>();
-	private String toys;
+	private ArrayList<Toy> toyList = new ArrayList<Toy>();
 	public ToyStore()
 	{
-		this.inventory = "";
 	}
-	public ToyStore(ArrayList<> a)
+	public ToyStore(ArrayList<Toy> ts)
 	{
-		this.inventory = a;
+		toyList = ts;
 	}
-	public void loadToys(String ts)
+	public void loadToys(ArrayList<Toy> ts)
 	{
-		toys = ts.split(", ");
-		for(int i = 0; i < inventory.size();i++)
+		String toys = ts.split(", ");
+		for(int i = 0; i < toys.length();i++)
 		{
 			String name = toys[i];
 			String type = toys[i+1];
 			Toy info = new Toy(getThatToy(name)){}; 
 			if(info == null){
-				if(toys.equals("Car")||toys.equals("AF")){
-					inventory.add(toys);
+				if(type.equals("Car")||type.equals("AF")){
+					toys.add(toys);
 				}
 				else{
 					count += 1;
@@ -33,7 +31,7 @@ public class ToyStore
 	}
 	public String getThatToy(String nm)
 	{
-		for(Toy x : inventory){
+		for(Toy x : toys){
 			if(x.equals(nm)){
 				return x;
 			}
@@ -42,9 +40,42 @@ public class ToyStore
 			}
 		}
 	}
-	public void getMostFrequentToy()
+	public String getMostFrequentToy()
 	{
 		String name = "";
-		int max = 
+		int max = Integer.MIN_VALUE;
+		for(Toy x : toys){
+			if(max < count){
+				max = count;
+				name = name;
+			}
+		}
+		return name;
+	}
+	public String getMostFrequentType()
+	{
+		int cars = 0;
+		int figures = 0;
+		for(Toy x : toys){
+			if(x.equals("Car")){
+				cars += 1;
+			}
+			if(x.equals("AF")){
+				figures += 1;
+			}
+		}
+		if(cars > figures){
+			return "Cars";
+		}
+		else if(figures > cars){
+			return "Action Figures";
+		}
+		else{
+			return "Equal amounts of action figures and cars!";
+		}
+	}
+	public String toString()
+	{
+		return toys;
 	}
 }

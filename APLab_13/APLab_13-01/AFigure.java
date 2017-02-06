@@ -1,24 +1,37 @@
-public class AFigure extends Toy
+public class AFigure extends Toy;
 {
-	private String AFigure;
 	private String name;
 	private int count;
 	public Toy()
 	{
 		super();
-		this.AFigure = "";
 	}
-	public Toy(String n, String b)
+	public Toy(String n)
 	{
 		super(n);
-		this.AFigure = b;
 	}
-	public String getType()
+	public String getName()
 	{
-		return AFigure;
+		return name;
+	}
+	public int getCount()
+	{
+		return count;
+	}
+	public void setName(String n)
+	{
+		this.name = n;
+	}
+	public void setCount()
+	{
+		this.count = 1;
+	}
+	public abstract String getType()
+	{
+		return "Action Figure";
 	}
 	public String toString()
 	{
-		return super.toString();
+		return name + count;
 	}
 }
