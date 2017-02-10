@@ -3,26 +3,28 @@ import java.util.Scanner;
 
 public class ToyStore
 {
-	private String var;
 	private ArrayList<String> toyList = new ArrayList<String>();
+	private int count;
 	public ToyStore()
 	{	
-	
+		this.count = 1;
 	}
 	public ToyStore(String n)
 	{
+		this.count = 1;
 		toyList.add(n);
-		this.var = n;
 		loadToys(n);
 	}
 	public void loadToys(String ts)
 	{
 		String[] toys = ts.split(", ");
-		int count = 0;
 		
-		for(int i = 0; i < toys.length;i++)
+		for(int i = 0; i < toys.length;i+=2)
 		{
-			int j = 0;
+			for(String x : toys){
+				
+			}
+			int j = i;
 			String name = toys[j];
 			String type = toys[j+1];
 			String info = getThatToy(name); 
@@ -33,6 +35,9 @@ public class ToyStore
 				else if(type.equals("AF")){
 					toyList.add(type);
 				}
+			}
+			else if(info.equals(name)){
+				toyList.add(name);
 			}
 			else{
 				count += 1;
@@ -45,16 +50,13 @@ public class ToyStore
 			if(x.equals(nm)){
 				return x;
 			}
-			else{
-				return null;
-			}
+			return null;
 		}
 		return "";
 	}
 	public String getMostFrequentToy()
 	{
 		String name = "";
-		int count = 1;
 		int max = Integer.MIN_VALUE;
 		for(String x : toyList){
 			if(max < count){
