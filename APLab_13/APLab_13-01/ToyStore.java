@@ -3,35 +3,45 @@ import java.util.Scanner;
 
 public class ToyStore
 {
-	private ArrayList<Toy> toyList = new ArrayList<Toy>();
+	private String var;
+	private ArrayList<String> toyList = new ArrayList<String>();
 	public ToyStore()
-	{
+	{	
+	
 	}
-	public ToyStore(ArrayList<Toy> ts)
+	public ToyStore(String n)
 	{
-		toyList = ts;
+		toyList.add(n);
+		this.var = n;
+		loadToys(n);
 	}
-	public void loadToys(ArrayList<Toy> ts)
+	public void loadToys(String ts)
 	{
-		String toys = ts.split(", ");
-		for(int i = 0; i < toys.length();i++)
+		String[] toys = ts.split(", ");
+		int count = 0;
+		
+		for(int i = 0; i < toys.length;i++)
 		{
-			String name = toys[i];
-			String type = toys[i+1];
-			Toy info = new Toy(getThatToy(name)){}; 
+			int j = 0;
+			String name = toys[j];
+			String type = toys[j+1];
+			String info = getThatToy(name); 
 			if(info == null){
-				if(type.equals("Car")||type.equals("AF")){
-					toys.add(toys);
+				if(type.equals("Car")){
+					toyList.add(type);
 				}
-				else{
-					count += 1;
+				else if(type.equals("AF")){
+					toyList.add(type);
 				}
+			}
+			else{
+				count += 1;
 			}
 		}
 	}
 	public String getThatToy(String nm)
 	{
-		for(Toy x : toys){
+		for(String x : toyList){
 			if(x.equals(nm)){
 				return x;
 			}
@@ -39,15 +49,17 @@ public class ToyStore
 				return null;
 			}
 		}
+		return "";
 	}
 	public String getMostFrequentToy()
 	{
 		String name = "";
+		int count = 1;
 		int max = Integer.MIN_VALUE;
-		for(Toy x : toys){
+		for(String x : toyList){
 			if(max < count){
 				max = count;
-				name = name;
+				name = x;
 			}
 		}
 		return name;
@@ -56,7 +68,7 @@ public class ToyStore
 	{
 		int cars = 0;
 		int figures = 0;
-		for(Toy x : toys){
+		for(String x : toyList){
 			if(x.equals("Car")){
 				cars += 1;
 			}
@@ -70,12 +82,14 @@ public class ToyStore
 		else if(figures > cars){
 			return "Action Figures";
 		}
-		else{
+		else if(figures == cars){
 			return "Equal amounts of action figures and cars!";
 		}
+		return "";
 	}
-	public String toString()
+	public String print()
 	{
-		return toys;
+		System.out.println(toyList);
+		return "";
 	}
 }

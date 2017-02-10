@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class SG4_1
 {
@@ -12,7 +13,11 @@ public class SG4_1
 		Scanner up = new Scanner(System.in);
 		
 		System.out.println("\n\n\tE C E A C C A A B B E B C B D A E C\t\n");
-
+		
+		String ts = "Hotwheel, Car, G.I.Joe, AF, PennyRacer, Car, Matchbox, Car, Star Wars, AF, Pullback, Car, Star Wars, AF";
+		String[] toys = ts.split(", ");
+		System.out.println(Arrays.toString(toys));
+		
 		int k = 9;
 		 
 		for(int i = 2; i <= k; i++){
