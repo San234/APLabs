@@ -24,7 +24,7 @@ public class ToyStore
 			String type = toys[i+1];
 			Toy t = getThatToy(name); //check to see if this toy  is on the list
 			
-			if(t == null){ // Toy t is not on the list
+			if(t == null){ // Toy t is not on the toyList
 				if(type.equals("Car"))
 					toyList.add(new Car(name));
 				else
