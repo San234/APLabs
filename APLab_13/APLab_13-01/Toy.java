@@ -24,9 +24,9 @@ public abstract class Toy
 	{
 		this.name = n;
 	}
-	public void setCount()
+	public void setCount(int c)
 	{
-		this.count = 1;
+		this.count = c;
 	}
 	public abstract String getType();
 	public String toString()
