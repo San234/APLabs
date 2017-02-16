@@ -1,27 +1,30 @@
-public abstract class Console extends GameSystem
+public class PC extends GameSystem
 {
 	private String platform;
 	private int serialNo;
-	public Console()
+	public PC()
 	{
 		super();
 	}
-	public Console(String p)
+	public PC(String p)
 	{
 		super(p);
 	}
 	public String getPlatform()
 	{
-		return platform;
+		return "PC";
 	}
 	public int getSerialNo()
 	{
 		return serialNo;
 	}
-	public abstract String getController();
+	public String systemInput()
+	{
+		return "Keyboard and Mouse";
+	}
 	public String toString()
 	{
 		return "Platform: " + getPlatform() + "\n" 
-		+ "Serial #: " + super.getSerialNo() + "\nController: " + getController();
+		+ "Serial #: " + super.getSerialNo() + "\nController: " + systemInput();
 	}
 }

@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public abstract class GameSystem
+public class GameSystem
 {
 	private String platform;
 	private int serialNo;
@@ -22,5 +22,5 @@ public abstract class GameSystem
 	public int getSerialNo()
 	{
 		return serialNo;
-	}
+	}	
 }
