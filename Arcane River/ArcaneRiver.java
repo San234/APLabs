@@ -19,6 +19,8 @@ public class ArcaneRiver
 	static int gold;
 	static int skill;
 	static int ErhdasEnc;
+	static int PsyOrPhy;
+	static int mon_s_atk;
 	static String name;
 	static Random rand = new Random();
 	static Scanner up = new Scanner(System.in);
@@ -31,16 +33,13 @@ public class ArcaneRiver
 		String user_name = up.nextLine();
 		
 		name = user_name;
-		hp =  rand.nextInt(80) + 140;
 		hp = rand.nextInt(75) + 180;
 		max_hp = hp;
 		mp = rand.nextInt(50) + 100;
 		max_mp = mp;
-		atk = rand.nextInt(36) + 64;
-		s_atk = rand.nextInt(47) + 53;
-		def = rand.nextInt(34) + 41;
+		atk = rand.nextInt(20) + 100;
 		s_atk = rand.nextInt(40) + 70;
-		def = rand.nextInt(32) + 48;
+		def = rand.nextInt(30) + 50;
 		exp = exp;
 		max_exp = 200;
 		gold = 200;
@@ -67,14 +66,14 @@ public class ArcaneRiver
 		String placeName = "";
 		
 		while(exp >= max_exp){
-			atk += 25;
-			def += 25;
+			atk += 20;
+			def += 20;
 			s_atk += 8;
 			max_hp += 50;
 			hp =max_hp;
 			max_mp += 30;
 			mp = max_mp;
-			level += 3;
+			level += 1;
 			exp -= max_exp;
 			max_exp = max_exp +90;
 		}
@@ -222,6 +221,7 @@ public class ArcaneRiver
 						hp = max_hp;
 					}
 				h_item -= 1;
+				item -= 1;
 				stat(user_name);
 				}
 			}
@@ -243,6 +243,7 @@ public class ArcaneRiver
 						mp = max_mp;
 					}
 					m_item -= 1;
+					item -= 1;
 					stat(user_name);
 				}
 			}
@@ -261,9 +262,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  rand.nextInt(40) + 60;
-		int mon_atk = rand.nextInt(25) + 30;
-		int mon_def = rand.nextInt(45) + 15;
+		int mon_hp =  rand.nextInt(50) + 100;
+		int mon_atk = rand.nextInt(25) + 90;
+		int mon_def = rand.nextInt(25) + 50;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("						|#|");
@@ -301,9 +302,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  rand.nextInt(10) + 64;
-		int mon_atk = rand.nextInt(60) + 80;
-		int mon_def = rand.nextInt(6) + 30;
+		int mon_hp =  rand.nextInt(25) + 100;
+		int mon_atk = rand.nextInt(60) + 120;
+		int mon_def = rand.nextInt(20) + 50;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("				|#|                               |#|   |#|");
@@ -345,9 +346,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  rand.nextInt(80) + 80;
-		int mon_atk = rand.nextInt(15) + 5;
-		int mon_def = rand.nextInt(32) + 50;
+		int mon_hp =  rand.nextInt(100) + 100;
+		int mon_atk = rand.nextInt(30) + 60;
+		int mon_def = rand.nextInt(30) + 70;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("					                               	  	     |#|");	
@@ -444,9 +445,9 @@ public class ArcaneRiver
 		String mon_kind7 = "of Flame";
 		String mon_kind8 = "of Rest";
 		
-		int mon_hp =  rand.nextInt(57) + 75;
-		int mon_atk = rand.nextInt(21) + 42;
-		int mon_def = rand.nextInt(10) + 35;
+		int mon_hp =  rand.nextInt(80) + 150;
+		int mon_atk = rand.nextInt(80) + 150;
+		int mon_def = rand.nextInt(80) + 150;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("					@@@@@@@@@@@@@@@@|#|@@@");
@@ -486,9 +487,9 @@ public class ArcaneRiver
 		String mon_kind7 = "of Flame";
 		String mon_kind8 = "of Rest";
 		
-		int mon_hp =  rand.nextInt(65) + 115;
-		int mon_atk = rand.nextInt(16) + 29;
-		int mon_def = rand.nextInt(25) + 69;
+		int mon_hp =  rand.nextInt(65) + 210;
+		int mon_atk = rand.nextInt(70) + 50;
+		int mon_def = rand.nextInt(100) + 150;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("						      |##|");
@@ -527,9 +528,11 @@ public class ArcaneRiver
 		String mon_kind7 = "of Flame";
 		String mon_kind8 = "of Rest";
 		
-		int mon_hp =  rand.nextInt(27) + 83;
-		int mon_atk = rand.nextInt(77) + 93;
-		int mon_def = rand.nextInt(24) + 42;
+		int mon_hp =  rand.nextInt(70) + 180;
+		int mon_atk = rand.nextInt(50) + 150;
+		mon_s_atk = rand.nextInt(100) + 150;
+		int mon_def = rand.nextInt(20) + 150;
+		PsyOrPhy = 1;
 		
 		System.out.println("!!Monster Appeared!!");
 		System.out.println("   $$    		   $         $         $$");
@@ -557,7 +560,7 @@ public class ArcaneRiver
 		
 		System.out.printf("|%14S %-18s|\n", mon_name, mon_kind7);
 		System.out.printf("|%8S = %5s%8S = %6s|\n", "hp", mon_hp, "atk", mon_atk);
-		System.out.printf("|%8S = %5s                 |\n", "def", mon_def);
+		System.out.printf("|%8S = %5s%8S = %5s|\n", "def", mon_def, s_atk);
 		
 		askHunt(mon_atk,user_name,mon_def,mon_hp,mon_name, ErhdasEnc);
 	}
@@ -612,6 +615,11 @@ public class ArcaneRiver
 		if(actual_a <= 0){
 			actual_a = 1;
 		}
+		int actual_d = mon_atk - def;
+		if(def > mon_atk){
+			actual_d = 1;
+		}
+		
 		mon_hp = mon_hp - actual_a;
 		if(mon_hp <= 0){
 			mon_hp = 0;
@@ -631,8 +639,13 @@ public class ArcaneRiver
 		System.out.printf("|%8S = %5s                 |\n", "def", mon_def);
 		System.out.printf("\"Erhdas %S\" got damaged by " + actual_a + "\n", mon_kind1);
 		if(mon_hp > 0){
-			System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + mon_atk + "\n", mon_kind1);
-			hp = hp - mon_atk;
+			System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + actual_d + "\n\n", mon_kind1);
+			hp = hp - actual_d;
+			
+			System.out.printf("%2S\n", user_name);
+			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
+			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
+			System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
 			if(hp <= 0){
 				hp = 0;
 				System.out.printf("%S died!\n", name);
@@ -645,11 +658,15 @@ public class ArcaneRiver
 		else if(mon_hp <= 0){
 			int added_exp = rand.nextInt(100) + 75;
 			int added_gold = rand.nextInt(75) + 43;
-			if(ErhdasEnc == 4){
+			if(ErhdasEnc == 3){
+				added_exp = 2 * (rand.nextInt(100) + 75);
+				added_gold = 2 * (rand.nextInt(75) + 43);
+			}
+			else if(ErhdasEnc == 4){
 				added_exp = 3 * (rand.nextInt(150) + 115);
 				added_gold = 3 * (rand.nextInt(125) + 75);
 			}
-			System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n", mon_kind1);
+			System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n\n", mon_kind1);
 			exp = exp + added_exp;			
 			gold = gold + added_gold;
 			stat(user_name);
@@ -665,10 +682,12 @@ public class ArcaneRiver
 		if(actual_a <= 0){
 			actual_a = 1;
 		}
+		
 		mon_hp = mon_hp - actual_a;
 		if(mon_hp <= 0){
 			mon_hp = 0;
 		}
+		
 		if(ErhdasEnc == 5){
 			mon_kind1 = "of Rock";
 			mon_skill = "Claw Clash";
@@ -694,7 +713,19 @@ public class ArcaneRiver
 		System.out.printf("\"Erhdas %S\" got damaged by " + actual_a + "\n", mon_kind1);
 		if(mon_hp > 0){
 			System.out.printf("\"Erdhas %S\" used \'%s\'!\nYou got %s by " + mon_atk + "\n", mon_kind1, mon_skill, dmg_stt);
-			hp = hp - mon_atk;
+			hp -= mon_atk;
+			System.out.printf("%2S\n", user_name);
+			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
+			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
+			System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
+			if(PsyOrPhy == 1){
+				System.out.printf("\"Erdhas %S\" used \'%s\'!\nYou got %s by " + mon_s_atk + "\n\n", mon_kind1, mon_skill, dmg_stt);
+				hp -= mon_s_atk;
+				System.out.printf("%2S\n", user_name);
+				System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
+				System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
+				System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
+			}
 			if(hp <= 0){
 				hp = 0;
 				System.out.printf("%S died!\n", name);
@@ -706,6 +737,10 @@ public class ArcaneRiver
 		else if(mon_hp <= 0){
 			int added_exp = rand.nextInt(50) + 140;
 			int added_gold = rand.nextInt(60) + 90;
+			if(mon_kind1.equals("of Tenacious")){
+				added_exp = 2 * (rand.nextInt(50) + 140);
+				added_gold = 2 * (rand.nextInt(60) + 90);
+			}
 			System.out.printf("!!" + mon_name + " %S died!!\nYou've earned " + added_exp + " points!!\nYou've earned " + added_gold + "G!!\n", mon_kind1);
 			exp = exp + added_exp;			
 			gold = gold + added_gold;
@@ -756,22 +791,12 @@ public class ArcaneRiver
 		if(actual_d < 0){
 			actual_d = 1;
 		}
-		hp = hp - actual_d;
-		if(hp <= 0){
-			hp = 1;
-			System.out.printf("!!\"%S\" endured it!!\n", name);
-		}
 		
 		int actual_a = atk - (mon_def*2);
 		if(actual_a <= 0){
 			actual_a = 1;
 		}
-		
-		mon_hp -= actual_a;
-		if(mon_hp <= 0){
-			mon_hp = 1;
-			System.out.printf("!!\"Erdhas %S\" endured it!!\n", mon_kind1);
-		}
+	
 		System.out.printf("|%16S %-16s|\n", mon_name, mon_kind1);
 		System.out.printf("|%8S = %5s%8S = %6s|\n", "hp", mon_hp, "atk", mon_atk);
 		System.out.printf("|%8S = %5s                 |\n", "def", mon_def);
@@ -784,7 +809,17 @@ public class ArcaneRiver
 		
 		System.out.printf("%S got damaged by " + actual_d + "\n", name);
 		System.out.printf("You countered \"Erdhas %S\" by " + actual_a + "\n", mon_kind1);
-		
+			
+		mon_hp -= actual_a;
+		if(mon_hp <= 0){
+			mon_hp = 1;
+			System.out.printf("!!\"Erdhas %S\" endured it!!\n", mon_kind1);
+		}
+		hp = hp - actual_d;
+		if(hp <= 0){
+			hp = 1;
+			System.out.printf("!!\"%S\" endured it!!\n", name);
+		}
 		askHunt(mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 	}
 	public static void useItem(int mon_def, int mon_hp ,int mon_atk, String mon_name, String user_name, int ErhdasEnc)
@@ -942,8 +977,8 @@ public class ArcaneRiver
 					hp = hp - mon_atk;
 				}
 				else if(mon_hp <= 0){
-					int added_exp = rand.nextInt(100) + 75;
-					int added_gold = rand.nextInt(75) + 43;
+					int added_exp = 2 * rand.nextInt(100) + 75;
+					int added_gold = 2 * rand.nextInt(75) + 43;
 					if(ErhdasEnc == 4){
 						added_exp = 3 * (rand.nextInt(150) + 115);
 						added_gold = 3 * (rand.nextInt(125) + 75);

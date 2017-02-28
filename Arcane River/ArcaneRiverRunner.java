@@ -14,7 +14,7 @@ public class ArcaneRiverRunner
 		String menu = up.nextLine();
 		
 		if(menu.equals("play")||menu.equals("Play")){
-			go.start();
+			((ArcaneRiver)(go)).start();
 		}
 		else if(menu.equals("direction")||menu.equals("Direction")){
 			direction(args);
