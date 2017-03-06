@@ -641,17 +641,17 @@ public class ArcaneRiver
 		if(mon_hp > 0){
 			System.out.printf("\"Erdhas %S\" used \'Fireball\'!\nYou got burned by " + actual_d + "\n\n", mon_kind1);
 			hp = hp - actual_d;
-			
-			System.out.printf("%2S\n", user_name);
-			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
-			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
-			System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
 			if(hp <= 0){
 				hp = 0;
 				System.out.printf("%S died!\n", name);
 				System.out.println("!!!GAME OVER!!!");
 				Respawn();
 			}
+			
+			System.out.printf("%2S\n", user_name);
+			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
+			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
+			System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
 			askHunt(mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 			
 		}
@@ -714,6 +714,13 @@ public class ArcaneRiver
 		if(mon_hp > 0){
 			System.out.printf("\"Erdhas %S\" used \'%s\'!\nYou got %s by " + mon_atk + "\n", mon_kind1, mon_skill, dmg_stt);
 			hp -= mon_atk;
+			if(hp <= 0){
+				hp = 0;
+				System.out.printf("%S died!\n", name);
+				System.out.println("!!!GAME OVER!!!");
+				Respawn();
+			}
+			
 			System.out.printf("%2S\n", user_name);
 			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "hp", hp, max_hp,"atk", atk);
 			System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
@@ -726,12 +733,7 @@ public class ArcaneRiver
 				System.out.printf("|%8S = %2s/%2s %8S = %6s|\n", "mp", mp, max_mp,"def", def);
 				System.out.printf("|%8S = %5s%8S : %3s/%5s|\n", "s_atk", s_atk, "exp", exp,max_exp);
 			}
-			if(hp <= 0){
-				hp = 0;
-				System.out.printf("%S died!\n", name);
-				System.out.println("!!!GAME OVER!!!");
-				Respawn();
-			}
+			
 			askHunt(mon_atk,user_name,mon_def,mon_hp,mon_name,ErhdasEnc);
 		}
 		else if(mon_hp <= 0){
