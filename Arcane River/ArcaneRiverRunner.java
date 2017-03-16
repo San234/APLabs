@@ -27,7 +27,7 @@ public class ArcaneRiverRunner
 	{
 		Scanner up = new Scanner(System.in);
 		
-		System.out.print("What is questionable?\n[Gameplay]\n[Abbreviation]\n[Plot]\n[nothing]\n");
+		System.out.print("What is questionable?\n[Gameplay]\n[Abbreviation]\n[Plot]\n[Nothing]\n");
 		String askDirection = up.nextLine();
 		
 		if(askDirection.equals("Gameplay")||askDirection.equals("gameplay")){
@@ -37,9 +37,9 @@ public class ArcaneRiverRunner
 			System.out.print("\"Shop\" = Goes to shop and you can buy potions.\n");
 			System.out.print("\"Attack\" = Charges toward your enemy and damage equal to your attack - enemy's defense.\n");
 			System.out.print("\"Flee\" = Run away from your enemy and return to town.\n");
-		    System.out.print("\"Defend\" = guard enemy's attack, but still damaging you by its attack - your def and you will counter them.\n");
+		    System.out.print("\"Defend\" = Guard the enemy's attack, but still damaging you by its attack - your def and you will counter them.\n");
 			System.out.print("\"Item\" = Choose which potion you would drink, but still enemy will attack you.\n");
-			System.out.print("\"Spell\" = After level 8, you will learn spells. Spell penetrates enemy's defense, but consumes mp.\n\n");
+			System.out.print("\"Spell\" = After level 8, you will learn spells. Spell penetrates enemy's defense, but consumes mp.\n\t\tHowever, when you use spell, you will be vulnerable either.\n\n");
 			direction(args);
 		}
 		else if(askDirection.equals("abbreviation")||askDirection.equals("Abbreviation")){

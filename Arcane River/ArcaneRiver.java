@@ -66,9 +66,9 @@ public class ArcaneRiver
 		String placeName = "";
 		
 		while(exp >= max_exp){
-			atk += 20;
-			def += 20;
-			s_atk += 8;
+			atk += 15;
+			def += 15;
+			s_atk += 10;
 			max_hp += 50;
 			hp =max_hp;
 			max_mp += 30;
@@ -303,7 +303,7 @@ public class ArcaneRiver
 		String mon_kind4 = "of Enjoy";
 		
 		int mon_hp =  rand.nextInt(25) + 100;
-		int mon_atk = rand.nextInt(60) + 120;
+		int mon_atk = rand.nextInt(60) + 140;
 		int mon_def = rand.nextInt(20) + 50;
 		
 		System.out.println("!!Monster Appeared!!");
@@ -396,9 +396,9 @@ public class ArcaneRiver
 		String mon_kind3 = "of Sad";
 		String mon_kind4 = "of Enjoy";
 		
-		int mon_hp =  3 * (rand.nextInt(40) + 80);
-		int mon_atk = 2 * (rand.nextInt(52) + 78);
-		int mon_def = 2 * (rand.nextInt(30) + 40);
+		int mon_hp =  3 * (rand.nextInt(25) + 150);
+		int mon_atk = 2 * (rand.nextInt(100) + 100);
+		int mon_def = 2 * (rand.nextInt(60) + 40);
 		
 		System.out.println("!!BOSS Appeared!!");
 		System.out.println("				                                 |##| ");

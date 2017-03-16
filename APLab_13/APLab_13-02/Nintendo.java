@@ -14,6 +14,6 @@ public class Nintendo extends Console
 	}
 	public String getPlatform()
 	{
-		return "Nintendo DS";
-	}
+		return "Nintendo";
+	} 
 }
