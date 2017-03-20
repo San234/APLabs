@@ -6,6 +6,7 @@ public class Satellite
 	static double two;
 	public static void main(String[]args)
 	{
+		NavigationSystem var = new Car();
 		ArrayList<NavigationSystem> locate = new ArrayList<>();
 		Random rand = new Random();
 		double[] honLoc = {5, 6};
