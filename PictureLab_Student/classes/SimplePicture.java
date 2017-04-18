@@ -52,7 +52,7 @@ public class SimplePicture implements DigitalPicture
   * a width of 200 and a height of 100 that is all white.
   * A no-argument constructor must be given in order for a class to
   * be able to be subclassed.  By default all subclasses will implicitly
-  * call this in their parent's no-argument constructor unless a 
+  * call this in their parent's no argument constructor unless a 
   * different call to super() is explicitly made as the first line 
   * of code in a constructor.
   */
@@ -139,7 +139,7 @@ public class SimplePicture implements DigitalPicture
  
  /**
   * Method to get the extension for this picture
-  * @return the extension (jpg, bmp, giff, etc)
+  * @return the extendsion (jpg, bmp, giff, etc)
   */
  public String getExtension() { return extension; }
 
@@ -276,7 +276,7 @@ public class SimplePicture implements DigitalPicture
   */
  public void setPictureFrame(PictureFrame pictureFrame)
  {
-   // set this picture object's picture frame to the passed one
+   // set this picture objects' picture frame to the passed one
    this.pictureFrame = pictureFrame;
  }
  
@@ -510,8 +510,8 @@ public class SimplePicture implements DigitalPicture
  /**
   * Method to draw a message as a string on the buffered image 
   * @param message the message to draw on the buffered image
-  * @param xPos  the x coordinate of the leftmost point of the string 
-  * @param yPos  the y coordinate of the bottom of the string  
+  * @param xPos  the leftmost point of the string in x 
+  * @param yPos  the bottom of the string in y
   */
  public void addMessage(String message, int xPos, int yPos)
  {
@@ -542,20 +542,20 @@ public class SimplePicture implements DigitalPicture
  
  /**
    * Method to create a new picture by scaling the current
-   * picture by the given x and y factors
-   * @param xFactor the amount to scale in x
-   * @param yFactor the amount to scale in y
+   * picture by the given 
+   * @param rFactor the amount to scale in the height (rows)
+   * @param cFactor the amount to scale in the width (columns)
    * @return the resulting picture
    */
-  public Picture scale(double xFactor, double yFactor)
+  public Picture scale(double rFactor, double cFactor)
   {
-    // set up the scale transform
+    // set up the scale tranform
     AffineTransform scaleTransform = new AffineTransform();
-    scaleTransform.scale(xFactor,yFactor);
+    scaleTransform.scale(cFactor,rFactor);
     
     // create a new picture object that is the right size
-    Picture result = new Picture((int) (getWidth() * xFactor),
-                                 (int) (getHeight() * yFactor));
+    Picture result = new Picture((int) (getHeight() * rFactor),
+                                 (int) (getWidth() * cFactor));
     
     // get the graphics 2d object to draw on the result
     Graphics graphics = result.getGraphics();
@@ -576,7 +576,7 @@ public class SimplePicture implements DigitalPicture
    */
   public Picture getPictureWithWidth(int width)
   {
-    // set up the scale transform
+    // set up the scale tranform
     double xFactor = (double) width / this.getWidth();
     Picture result = scale(xFactor,xFactor);
     return result;
@@ -591,7 +591,7 @@ public class SimplePicture implements DigitalPicture
    */
   public Picture getPictureWithHeight(int height)
   {
-    // set up the scale transform
+    // set up the scale tranform
     double yFactor = (double) height / this.getHeight();
     Picture result = scale(yFactor,yFactor);
     return result;
@@ -647,7 +647,7 @@ public class SimplePicture implements DigitalPicture
    if (posDot >= 0)
        extension = fileName.substring(posDot + 1);
    
-   // write the contents of the buffered image to the file
+   // write the contents of the buffered image to the file as jpeg
    ImageIO.write(bufferedImage, extension, file);
      
  }
