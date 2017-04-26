@@ -318,21 +318,25 @@ public class Picture extends SimplePicture
   }
 	public void myCollage()
   {
-	  
-    Picture seagull = new Picture("seagull.jpg");
-	//need to add seagull picture
-    this.copy(seagull, 235, 235, 321, 343);
-    Picture seagullMutated = new Picture(seagull);
-    seagullMutated.mirrorHorizontal();
-    this.copy(seagullMutated, 235, 235, 321, 343);
-    this.copy(seagull, 235, 235, 321, 343);
+	Picture seagull = new Picture("seagull.jpg");
+    Picture beach = new Picture("beach.jpg");
+	Picture seagullNegated = new Picture(seagull); 
+	seagullNegated.GrayScale();
+    this.copy(seagullNegated,0,150,640,150);
+    this.copy(beach,0,0,0,0);
+    this.copy(seagull,0,40,30,90);
+    Picture beachNoBlue = new Picture(beach);
+    beachNoBlue.zeroBlue();
+    this.copy(beachNoBlue,0,0,0,0);
+    this.copy(seagull,100,0,100,0);
+    this.copy(beach,200,0,350,50);
     this.mirrorVertical();
     this.write("collage.jpg");
   }
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
-    Picture flower1 = new Picture("flower1.jpg");
+    Picture flower1 = new Picture("seagull.jpg");
     Picture flower2 = new Picture("flower2.jpg");
     //this.copy(flower1,0,0);
     //this.copy(flower2,100,0);
@@ -341,7 +345,7 @@ public class Picture extends SimplePicture
     flowerNoBlue.zeroBlue();
     //this.copy(flowerNoBlue,300,0);
     //this.copy(flower1,400,0);
-   // this.copy(flower2,500,0);
+    //his.copy(flower2,500,0);
     this.mirrorVertical();
     this.write("collage.jpg");
   }
@@ -369,6 +373,28 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
+      }
+    }
+  }
+  public void edgeDetection2(int edgeDist)
+  {
+    Pixel topPixel = null;
+    Pixel botPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    Color botColor = null;
+    for (int row = 0; row < pixels.length-1; row++)
+    {
+      for (int col = 0; 
+           col < pixels[0].length; col++)
+      {
+        topPixel = pixels[row][col];
+        botPixel = pixels[row+1][col];
+        botColor = botPixel.getColor();
+        if (topPixel.colorDistance(botColor) > 
+            edgeDist)
+          topPixel.setColor(Color.BLACK);
+        else
+          topPixel.setColor(Color.WHITE);
       }
     }
   }
