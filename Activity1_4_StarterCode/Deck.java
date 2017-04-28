@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * The Deck class represents a shuffled deck of cards.
@@ -37,6 +38,7 @@ public class Deck {
 			this.cards.add(card);
 		}
 		this.size =  this.cards.size();
+		System.out.println(this.size);
 		shuffle();
 	}
 
@@ -54,7 +56,7 @@ public class Deck {
 			return false;
 		}
 	}
-
+	
 	/**
 	 * Accesses the number of undealt cards in this deck.
 	 * @return the number of undealt cards in this deck.
@@ -79,12 +81,11 @@ public class Deck {
 	 */
 	public Card deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		this.size = this.size - 1;
+		this.size = this.size - 1;//Decrement the size
 		if(this.size > 0){
 			return this.cards.get(this.size);
 		}
 		return null;
-		
 	}
 
 	/**

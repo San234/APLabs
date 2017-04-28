@@ -10,8 +10,13 @@ public class DeckTester {
 	public static void main(String[] args) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		
-		Deck S9 = new Deck();
-		Deck D13 = new Deck();
-		Deck C1 = new Deck();
+		String[] ranks = {"jack", "queen", "king"};
+		String[] suits = {"blue", "red","yellow"};
+		int[] value = {11,12,13};
+		
+
+		Deck trump = new Deck(ranks, suits, value);//In Korea we call playing card as trump
+		Deck playingCard = new Deck(ranks, suits, value);
+		Deck joker = new Deck(ranks, suits, value);
 	}
 }

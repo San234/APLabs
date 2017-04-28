@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -49,10 +51,25 @@ public class Shuffler {
 	 * the cards in one half with the cards in the other.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+	public static void perfectShuffle(int[] values)
+	{
+		int[] cards = new int[values.length]; 
+		int median = (values.length + 1) / 2; 
+		
+		int k = 0;
+		for(int j=0; j<median; j++){
+			cards[k] = values[j];
+			k += 2;
+		}
+		k=1;
+		for(int j=2; j<values.length; j++){
+			cards[k] = values[j];
+			k += 2;
+		}
+		for(int j=0; j<values.length; j++){
+			values[j] = cards[j];
+		}
 	}
-
 	/**
 	 * Apply an "efficient selection shuffle" to the argument.
 	 * The selection shuffle algorithm conceptually maintains two sequences
@@ -66,5 +83,19 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		Random rand = new Random();
+		int[] cards = new int[values.length]; 
+		
+		for(int k=0; k < cards.length; k++){
+			int j = rand.nextInt(4);
+			cards[k] = j;
+			for(int i : cards){
+				if(j == i){
+					cards[k] = j;
+					j = rand.nextInt(4);
+				}
+			}
+			values[k] = cards[j];
+		}
 	}
 }
