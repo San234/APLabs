@@ -9,7 +9,7 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 3;
 
 
 	/**
@@ -19,7 +19,7 @@ public class Shuffler {
 	public static void main(String[] args) {
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive perfect shuffles:");
-		int[] values1 = {0, 1, 2, 3};
+		int[] values1 = {0, 1, 2, 3, 4, 5, 6, 7};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			perfectShuffle(values1);
 			System.out.print("  " + j + ":");
@@ -32,7 +32,7 @@ public class Shuffler {
 
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
-		int[] values2 = {0, 1, 2, 3};
+		int[] values2 = {0, 1, 2, 3, 4, 5, 6};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
 			System.out.print("  " + j + ":");
@@ -56,15 +56,23 @@ public class Shuffler {
 		int[] cards = new int[values.length]; 
 		int median = (values.length + 1) / 2; 
 		
+		System.out.println(cards.length);
+		
 		int k = 0;
 		for(int j=0; j<median; j++){
 			cards[k] = values[j];
 			k += 2;
 		}
-		k=1;
-		for(int j=2; j<values.length; j++){
+		k = 1;
+		for(int j=median; j<values.length; j++){
 			cards[k] = values[j];
 			k += 2;
+			if(k > values.length){
+				k -= 1;
+				for(j=0; j<values.length; j++){
+				values[j] = cards[j];
+				}
+			}
 		}
 		for(int j=0; j<values.length; j++){
 			values[j] = cards[j];
@@ -87,14 +95,8 @@ public class Shuffler {
 		int[] cards = new int[values.length]; 
 		
 		for(int k=0; k < cards.length; k++){
-			int j = rand.nextInt(4);
+			int j = rand.nextInt(values.length);
 			cards[k] = j;
-			for(int i : cards){
-				if(j == i){
-					cards[k] = j;
-					j = rand.nextInt(4);
-				}
-			}
 			values[k] = cards[j];
 		}
 	}

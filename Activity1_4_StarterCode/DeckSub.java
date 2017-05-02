@@ -1,18 +1,17 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * The Deck class represents a shuffled deck of cards.
  * It provides several operations including
  *      initialize, shuffle, deal, and check if empty.
  */
-public class Deck {
+public class DeckSub {
 
 	/**
 	 * cards contains all the cards in the deck.
 	 */
-	private List<Card> cards;
+	private List<CardSub> cards;
 
 	/**
 	 * size is the number of not-yet-dealt cards.
@@ -20,8 +19,7 @@ public class Deck {
 	 * The next card to be dealt is at size - 1.
 	 */
 	private int size;
-	
-	
+
 
 	/**
 	 * Creates a new <code>Deck</code> instance.<BR>
@@ -31,14 +29,14 @@ public class Deck {
 	 * @param suits is an array containing all of the card suits.
 	 * @param values is an array containing all of the card point values.
 	 */
-	public Deck(String[] ranks, String[] suits, int[] values) {
-		this.cards = new ArrayList<Card>();
-		for(int i = 0; i < ranks.length; i++){
-			Card card = new Card(ranks[i], suits[i], values[i]);
-			this.cards.add(card);
+	public DeckSub(String[] ranks, String[] suits, int[] values) {
+		cards = new ArrayList<CardSub>();
+		for (int j = 0; j < ranks.length; j++) {
+			for (String suitString : suits) {
+				cards.add(new CardSub(ranks[j], suitString, values[j]));
+			}
 		}
-		this.size =  this.cards.size();
-		System.out.println(this.size);
+		size = cards.size();
 		shuffle();
 	}
 
@@ -48,22 +46,15 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		if(cards.size() == 0){
-			return true;
-		}
-		else{
-			return false;
-		}
+		return size == 0;
 	}
-	
+
 	/**
 	 * Accesses the number of undealt cards in this deck.
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return cards.size();
+		return size;
 	}
 
 	/**
@@ -71,16 +62,12 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		Random rand = new Random();
-		int[] values = new int[cards.size()]; 
-		
-		for(int k=0; k < cards.size(); k++){
-			int j = rand.nextInt(cards.size());
-			Card i = cards.get(j);
-			cards.set(j, cards.get(k));
-			cards.set(k, i);
-		}
+		for( int k = size - 1; k >= 0; k-- ) {
+            int r = (int)(Math.random() * k);
+            CardSub tmp = cards.get(r);
+            cards.set(r, cards.get(k));
+            cards.set(k, tmp);
+        }
 	}
 
 	/**
@@ -88,13 +75,12 @@ public class Deck {
 	 * @return the card just dealt, or null if all the cards have been
 	 *         previously dealt.
 	 */
-	public Card deal() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+	public CardSub deal() {
 		if (isEmpty()) {
 			return null;
 		}
 		size--;
-		Card c = cards.get(size);
+		CardSub c = cards.get(size);
 		return c;
 	}
 
